@@ -6,7 +6,111 @@
   <title>Bags &amp; Price List - NB's Marketspace</title>
   <!-- Import a vivacious script font from Google Fonts for the tagline -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
-  <style>
+ <style>
+body {
+  <div class="date-label">Current prices valid for: December 7–13</div>
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f7f4;
+}
+
+/* -------------------------- */
+/*   DATE LABEL AT THE TOP    */
+/* -------------------------- */
+.date-label {
+    background-color: #2c5f2d;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* -------------------------- */
+/*      HEADER + LOGO TEXT    */
+/* -------------------------- */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+header img.logo {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+header p.tagline {
+    margin-top: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+}
+
+/* -------------------------- */
+/*      BAG SECTION STYLES    */
+/* -------------------------- */
+.bag-section {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.bag-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2d4e2a;
+    text-align: left;
+    border-bottom: 2px solid #dfe7df;
+    padding-bottom: 4px;
+}
+
+.bag-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.bag-section li {
+    padding: 5px 0;
+    font-size: 1.05rem;
+}
+
+/* -------------------------- */
+/*    MEDIUM THUMBNAIL IMAGES */
+/* -------------------------- */
+.bag-image {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto 15px auto;
+    border-radius: 8px;
+}
+
+/* -------------------------- */
+/*     MOBILE RESPONSIVENESS  */
+/* -------------------------- */
+@media (max-width: 600px) {
+    .bag-section {
+        padding: 15px;
+    }
+
+    .bag-image {
+        width: 160px;
+    }
+
+    .bag-section li {
+        font-size: 1rem;
+    }
+}
+</style>
    body {
      font-family: Arial, sans-serif;
      margin: 0;
