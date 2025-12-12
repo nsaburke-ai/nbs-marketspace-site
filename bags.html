@@ -63,11 +63,13 @@
   .order-info {
     background: white;
     padding: 15px;
-    margin: 40px auto;
+    margin: 40px auto 50px auto;  /* centred with even top/bottom space */
     width: 90%;
     max-width: 900px;
     border-radius: 10px;
     font-size: 14px;
+    box-sizing: border-box;       /* makes width calculation precise */
+}
   }
 
   .order-info strong {
