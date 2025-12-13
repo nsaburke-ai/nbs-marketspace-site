@@ -1,64 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bags & Prices</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bag Options & Prices – NB's MarketSpace</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #eef8ef;
-}
+  <style>
+    :root{
+      --bg: #eaf6ea;
+      --panel: #ffffff;
+      --green: #2a4c2f;
+      --text: #1f2a1f;
+      --muted: #4b5b4b;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --radius: 16px;
+    }
 
-h1, h2, h3 {
-  font-family: Arial, sans-serif !important;
-  color: #2a4c2f;
-}
+    *{ box-sizing:border-box; }
 
-nav {
-  background: #2a4c2f;
-  padding: 14px 24px;
-  display: flex;
-  justify-content: space-between;
-}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-nav img { height: 70px; }
+    /* NAV */
+    nav{
+      background: var(--green);
+      padding: 14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    nav img{ height:70px; width:auto; display:block; }
+    nav a{
+      color:#fff;
+      margin-left:18px;
+      text-decoration:none;
+      font-weight:bold;
+      white-space:nowrap;
+    }
+    nav a:hover{ text-decoration:underline; }
 
-nav a {
-  color: #fff;
-  margin-left: 18px;
-  text-decoration: none;
-  font-weight: bold;
-}
+    /* PAGE */
+    .wrap{
+      max-width: 1200px;
+      margin: 28px auto 44px;
+      padding: 0 18px;
+    }
 
-main {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 20px;
-}
-</style>
+    .header{
+      text-align:center;
+      padding: 18px 18px 8px;
+    }
+    .header h1{
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-family: Arial, sans-serif !important; /* force non-curly */
+    }
+    .header p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    /* Make last row of 2 cards centred */
+    .grid .card:nth-last-child(-n+2){
+      justify-self: center;
+      width: 100%;
+    }
+
+    .card{
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      padding: 16px;
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .card img{
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 14px;
+      display:block;
+    }
+
+    .title{
+      margin: 12px 0 4px;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 800;
+      font-family: Arial, sans-serif !important;
+    }
+
+    .price{
+      margin: 0 0 10px;
+      font-weight: 800;
+      color: #203220;
+    }
+
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* ORDER BAR */
+    .order{
+      margin-top: 24px;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(42,76,47,0.25); /* even border all around */
+      font-size: 14px;
+    }
+    .order strong{ color: var(--green); }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(240px, 1fr)); }
+      .grid .card:nth-last-child(-n+2){ justify-self: stretch; max-width:none; }
+      .card{ max-width:none; }
+    }
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <img src="logo.png">
-  <div>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Me</a>
-    <a href="why.html">Why We're Different</a>
-    <a href="bags.html">Bags & Prices</a>
+  <nav>
+    <img src="logo.png" alt="NB's MarketSpace logo">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="why.html">Why We're Different</a>
+      <a href="bags.html">Bags & Prices</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="header">
+      <h1>Bag Options &amp; Price List</h1>
+      <p>Current prices valid for: <strong>December 7–13</strong></p>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1) Seasonings -->
+      <div class="card">
+        <img src="seasonings.jpg" alt="Seasonings & Salad Bag">
+        <div class="title">Seasonings &amp; Salad Bag</div>
+        <div class="price">TT$54</div>
+        <ul>
+          <li>1 lb onions – $5</li>
+          <li>1 pk garlic – $5</li>
+          <li>1 lb cucumbers – $10</li>
+          <li>1 lb tomatoes – $13</li>
+          <li>2 celery – $8</li>
+          <li>2 chive – $8</li>
+          <li>1 shadon beni – $5</li>
+        </ul>
+      </div>
+
+      <!-- 2) Standard -->
+      <div class="card">
+        <img src="standard.jpg" alt="Standard Bag">
+        <div class="title">Standard Bag</div>
+        <div class="price">TT$99</div>
+        <ul>
+          <li>3 lbs Irish potatoes – $10</li>
+          <li>1 lb sweet potatoes – $7</li>
+          <li>1 pk carrots – $7</li>
+          <li>1 lb cucumbers – $10</li>
+          <li>1 lb tomatoes – $13</li>
+          <li>2 lbs pumpkin – $6</li>
+          <li>¼ lb ginger – $7</li>
+          <li>10 ochroes – $3</li>
+          <li>1 lb onions – $5</li>
+          <li>1 pk garlic – $5</li>
+          <li>2 celery – $8</li>
+          <li>2 chive – $8</li>
+          <li>2 shadon beni – $10</li>
+        </ul>
+      </div>
+
+      <!-- 3) Premium -->
+      <div class="card">
+        <img src="premium.jpg" alt="Premium Bag">
+        <div class="title">Premium Bag</div>
+        <div class="price">TT$150</div>
+        <ul>
+          <li>3 lbs Irish potatoes – $10</li>
+          <li>3 lbs sweet potatoes – $20</li>
+          <li>1 pk carrots – $7</li>
+          <li>2 lbs cucumbers – $20</li>
+          <li>2 lbs tomatoes – $26</li>
+          <li>2 lbs pumpkin – $6</li>
+          <li>½ lb ginger – $14</li>
+          <li>20 ochroes – $6</li>
+          <li>2 lbs onions – $10</li>
+          <li>1 pk garlic – $5</li>
+          <li>2 celery – $8</li>
+          <li>2 chive – $8</li>
+          <li>2 shadon beni – $10</li>
+        </ul>
+      </div>
+
+      <!-- 4) Pre-cut -->
+      <div class="card">
+        <img src="precut.png" alt="Pre-cut Convenience Bag">
+        <div class="title">Pre-cut Convenience Bag</div>
+        <div class="price">TT$50</div>
+        <ul>
+          <li>2 lbs pumpkin – $8</li>
+          <li>1 lb carrots – $10</li>
+          <li>1 lb cabbage – $12</li>
+          <li>1 lb bodi – $12</li>
+          <li>Callaloo bush – $8</li>
+        </ul>
+      </div>
+
+      <!-- 5) Fruit -->
+      <div class="card">
+        <img src="fruit.jpg" alt="Fruit Bag">
+        <div class="title">Fruit Bag</div>
+        <div class="price">TT$66</div>
+        <ul>
+          <li>5 mandarins – $10</li>
+          <li>6 apples – $20</li>
+          <li>2 lbs bananas – $16</li>
+          <li>1 pineapple – $20</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="order">
+      <strong>Order information:</strong> Call or WhatsApp Natasha at <strong>759-1743</strong> by Thursday for weekend delivery.
+      Delivery fee: <strong>TT$20</strong>. Custom orders welcome!
+    </div>
+
   </div>
-</nav>
-
-<main>
-  <h1>Bag Options & Price List</h1>
-  <p><strong>Current prices valid for: December 7–13</strong></p>
-
-  <!-- your existing bag cards stay here -->
-</main>
 
 </body>
 </html>
