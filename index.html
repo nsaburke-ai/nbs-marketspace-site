@@ -1,180 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NB's MarketSpace</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NB's MarketSpace</title>
 
-  <!-- Google Font for tagline -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0f0c;
+  color: #fff;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0b0f0c;
-      color: #ffffff;
-    }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: rgba(0,0,0,0.55);
+  z-index: 100;
+}
 
-    /* Navigation bar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 24px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-    }
+nav img {
+  height: 110px;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+}
 
-    .brand img {
-      height: 110px; /* Larger logo */
-      width: auto;
-      display: block;
-    }
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: url("hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .nav-links a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: bold;
-      margin-left: 20px;
-      font-size: 15px;
-      opacity: 0.95;
-    }
+.hero-content {
+  text-align: center;
+  padding: 140px 20px 40px;
+  max-width: 900px;
+}
 
-    .nav-links a:hover {
-      text-decoration: underline;
-      opacity: 1;
-    }
+.hero h1 {
+  font-size: clamp(32px, 4vw, 56px);
+  margin-bottom: 20px;
+}
 
-    /* Hero section */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("hero.jpg") center / cover no-repeat;
-      filter: brightness(0.7);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        rgba(0, 0, 0, 0.25),
-        rgba(0, 0, 0, 0.65)
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 140px 20px 40px; /* space for fixed nav */
-      max-width: 900px;
-    }
-
-    .tagline {
-      font-family: "Pacifico", cursive;
-      font-size: clamp(32px, 4vw, 56px);
-      margin-bottom: 20px;
-      text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.6);
-      padding: 12px 22px;
-      background: rgba(0, 0, 0, 0.28);
-      border-radius: 14px;
-      display: inline-block;
-    }
-
-    .subtext {
-      font-size: 18px;
-      max-width: 650px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
-      opacity: 0.95;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 14px 24px;
-      background-color: #2a4c2f;
-      color: #ffffff;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 16px;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
-    }
-
-    .cta-button:hover {
-      background-color: #34633c;
-    }
-
-    .footer-note {
-      margin-top: 18px;
-      font-size: 13px;
-      opacity: 0.85;
-    }
-  </style>
+.cta {
+  display: inline-block;
+  padding: 14px 26px;
+  background: #2a4c2f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="brand">
-      <img src="logo.png" alt="NB's MarketSpace logo">
-    </div>
+<nav>
+  <img src="logo.png" alt="NB's MarketSpace">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="why.html">Why We're Different</a>
+    <a href="bags.html">Bags & Prices</a>
+  </div>
+</nav>
 
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="why.html">Why We’re Different</a>
-      <a href="bags.html">Bags &amp; Prices</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <main class="hero">
-    <div class="hero-content">
-      <div class="tagline">
-        Can't come to the market? We've got you covered!
-      </div>
-
-      <p class="subtext">
-        Fresh, high-quality produce delivered with care, reliability, and a personal touch.
-      </p>
-
-      <a href="bags.html" class="cta-button">
-        View Bag Options &amp; Prices
-      </a>
-
-      <div class="footer-note">
-        Serving Couva • Weekly updates • Clean, neatly packed produce
-      </div>
-    </div>
-  </main>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Fresh Produce, Delivered</h1>
+    <p>Can’t come to the market? We’ve got you covered.</p>
+    <a class="cta" href="bags.html">View Bag Options</a>
+  </div>
+</section>
 
 </body>
 </html>
