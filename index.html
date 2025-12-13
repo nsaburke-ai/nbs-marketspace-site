@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NB's MarketSpace</title>
 
+  <!-- Google Font for tagline -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -13,11 +14,11 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0f0c;
+      background-color: #0b0f0c;
       color: #ffffff;
     }
 
-    /* Top nav */
+    /* Navigation bar */
     nav {
       position: fixed;
       top: 0;
@@ -26,20 +27,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 18px;
-      background: rgba(0,0,0,0.45);
+      padding: 14px 24px;
+      background: rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(6px);
-      z-index: 10;
+      z-index: 100;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
     }
 
     .brand img {
-      height: 64px; /* bigger logo */
+      height: 110px; /* Larger logo */
       width: auto;
       display: block;
     }
@@ -47,21 +47,22 @@
     .nav-links a {
       color: #ffffff;
       text-decoration: none;
-      font-weight: 700;
-      margin-left: 16px;
-      opacity: 0.95;
+      font-weight: bold;
+      margin-left: 20px;
+      font-size: 15px;
     }
 
     .nav-links a:hover {
       text-decoration: underline;
     }
 
-    /* Hero */
+    /* Hero section */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
@@ -69,114 +70,102 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("hero.jpg") center/cover no-repeat;
+      background: url("hero.jpg") center / cover no-repeat;
       filter: brightness(0.7);
-      transform: scale(1.02);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 40%, rgba(0,0,0,0.1), rgba(0,0,0,0.7) 70%);
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.6)
+      );
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      width: min(980px, 92%);
-      padding-top: 90px; /* space under fixed nav */
-      display: grid;
-      gap: 18px;
+      text-align: center;
+      padding: 140px 20px 40px; /* space for fixed nav */
+      max-width: 900px;
     }
 
     .tagline {
       font-family: "Pacifico", cursive;
-      font-size: clamp(28px, 4vw, 54px);
-      line-height: 1.1;
-      text-shadow: 0 6px 18px rgba(0,0,0,0.45);
-      margin: 0;
+      font-size: clamp(32px, 4vw, 56px);
+      margin-bottom: 20px;
+      text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.6);
+      padding: 12px 22px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 14px;
+      display: inline-block;
     }
 
     .subtext {
-      font-size: clamp(14px, 1.6vw, 18px);
-      max-width: 620px;
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
       opacity: 0.95;
-      margin: 0;
     }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .btn {
+    .cta-button {
       display: inline-block;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.35);
+      padding: 14px 24px;
+      background-color: #2a4c2f;
       color: #ffffff;
-      background: rgba(0,0,0,0.35);
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 16px;
     }
 
-    .btn:hover {
-      background: rgba(0,0,0,0.55);
-    }
-
-    .btn.primary {
-      background: #2a4c2f;
-      border-color: #2a4c2f;
-    }
-
-    .btn.primary:hover {
-      filter: brightness(1.05);
+    .cta-button:hover {
+      background-color: #34633c;
     }
 
     .footer-note {
-      position: relative;
-      z-index: 2;
-      margin-top: 14px;
-      font-size: 12px;
+      margin-top: 18px;
+      font-size: 13px;
       opacity: 0.85;
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Navigation -->
   <nav>
     <div class="brand">
-      <img src="logo.png" alt="NB's MarketSpace logo" />
+      <img src="logo.png" alt="NB's MarketSpace logo">
     </div>
     <div class="nav-links">
       <a href="bags.html">Bag Options &amp; Price List</a>
-      <!-- If you later add about.html, you can enable this:
-      <a href="about.html">About</a>
-      -->
     </div>
   </nav>
 
+  <!-- Hero -->
   <main class="hero">
     <div class="hero-content">
-      <h1 class="tagline">Can’t come to the market? We’ve got you covered!</h1>
+      <div class="tagline">
+        Can't come to the market? We've got you covered!
+      </div>
+
       <p class="subtext">
         Fresh, high-quality produce delivered with care, reliability, and a personal touch.
       </p>
 
-      <div class="cta-row">
-        <a class="btn primary" href="bags.html">View Bags &amp; Prices</a>
-        <!-- Optional second button if you add about.html later:
-        <a class="btn" href="about.html">About NB’s MarketSpace</a>
-        -->
-      </div>
+      <a href="bags.html" class="cta-button">
+        View Bag Options &amp; Prices
+      </a>
 
       <div class="footer-note">
-        Couva area • Weekly updates • Clean, neatly packed produce
+        Serving Couva • Weekly updates • Clean, neatly packed produce
       </div>
     </div>
   </main>
+
 </body>
 </html>
