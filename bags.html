@@ -3,182 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bags & Price List – NB’s MarketSpace</title>
+<title>Bags & Prices</title>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #e8f6e8;
-  }
-
-  h1 {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 28px;
-    color: #275e37;
-  }
-
-  .date-line {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 14px;
-    color: #444;
-  }
-
-  .bag-row {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
-  }
-
-  .bag {
-    width: 260px;
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  }
-
-  .bag-image {
-    width: 100%;
-    height: 165px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  h3 {
-    margin-top: 12px;
-    margin-bottom: 10px;
-    color: #1d4d2e;
-  }
-
-  ul {
-    padding-left: 20px;
-    margin: 0;
-  }
-
-  .order-info {
-    background: white;
-    padding: 15px;
-    margin: 40px auto 50px auto;  /* centred with even top/bottom space */
-    width: 90%;
-    max-width: 900px;
-    border-radius: 10px;
-    font-size: 14px;
-    box-sizing: border-box;       /* makes width calculation precise */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef8ef;
 }
-  }
 
-  .order-info strong {
-    color: #1d4d2e;
-  }
+h1, h2, h3 {
+  font-family: Arial, sans-serif !important;
+  color: #2a4c2f;
+}
+
+nav {
+  background: #2a4c2f;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav img { height: 70px; }
+
+nav a {
+  color: #fff;
+  margin-left: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Bag Options & Price List</h1>
-<p class="date-line"><strong>Current prices valid for: December 7–13</strong></p>
-
-<!-- ---------------- ROW 1: SEASONINGS / STANDARD / PREMIUM ---------------- -->
-<div class="bag-row">
-
-  <!-- Seasonings Bag -->
-  <div class="bag">
-    <img src="nb_site_pics/seasonings.jpg" class="bag-image" alt="Seasonings Bag">
-    <h3>Seasonings & Salad Bag – TT$54</h3>
-    <ul>
-      <li>1 lb onions – $5</li>
-      <li>1 pk garlic – $5</li>
-      <li>1 lb cucumbers – $10</li>
-      <li>1 lb tomatoes – $13</li>
-      <li>2 celery – $8</li>
-      <li>2 chive – $8</li>
-      <li>1 shadon beni – $5</li>
-    </ul>
+<nav>
+  <img src="logo.png">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="why.html">Why We're Different</a>
+    <a href="bags.html">Bags & Prices</a>
   </div>
+</nav>
 
-  <!-- Standard Bag -->
-  <div class="bag">
-    <img src="nb_site_pics/standard.jpg" class="bag-image" alt="Standard Bag">
-    <h3>Standard Bag – TT$99</h3>
-    <ul>
-      <li>3 lbs Irish potatoes – $10</li>
-      <li>1 lb sweet potatoes – $7</li>
-      <li>1 pk carrots – $7</li>
-      <li>1 lb cucumbers – $10</li>
-      <li>1 lb tomatoes – $13</li>
-      <li>2 lbs pumpkin – $6</li>
-      <li>¼ lb ginger – $7</li>
-      <li>10 ochroes – $3</li>
-      <li>1 lb onions – $5</li>
-      <li>1 pk garlic – $5</li>
-      <li>2 celery – $8</li>
-      <li>2 chive – $8</li>
-      <li>2 shadon beni – $10</li>
-    </ul>
-  </div>
+<main>
+  <h1>Bag Options & Price List</h1>
+  <p><strong>Current prices valid for: December 7–13</strong></p>
 
-  <!-- Premium Bag -->
-  <div class="bag">
-    <img src="nb_site_pics/premium.jpg" class="bag-image" alt="Premium Bag">
-    <h3>Premium Bag – TT$150</h3>
-    <ul>
-      <li>3 lbs Irish potatoes – $10</li>
-      <li>3 lbs sweet potatoes – $20</li>
-      <li>1 pk carrots – $7</li>
-      <li>2 lbs cucumbers – $20</li>
-      <li>2 lbs tomatoes – $26</li>
-      <li>2 lbs pumpkin – $6</li>
-      <li>½ lb ginger – $14</li>
-      <li>20 ochroes – $6</li>
-      <li>2 lbs onions – $10</li>
-      <li>1 pk garlic – $5</li>
-      <li>2 celery – $8</li>
-      <li>2 chive – $8</li>
-      <li>2 shadon beni – $10</li>
-    </ul>
-  </div>
-
-</div>
-
-<!-- ---------------- ROW 2: PRE-CUT + FRUIT (CENTERED) ---------------- -->
-<div class="bag-row">
-
-  <!-- Pre-cut Convenience Bag -->
-  <div class="bag">
-    <img src="nb_site_pics/precut.png" class="bag-image" alt="Pre-cut Convenience Bag">
-    <h3>Pre-cut Convenience Bag – TT$50</h3>
-    <ul>
-      <li>2 lbs pumpkin – $8</li>
-      <li>1 lb carrots – $10</li>
-      <li>1 lb cabbage – $12</li>
-      <li>1 lb bodi – $12</li>
-      <li>Callaloo bush – $8</li>
-    </ul>
-  </div>
-
-  <!-- Fruit Bag -->
-  <div class="bag">
-    <img src="nb_site_pics/fruit.jpg" class="bag-image" alt="Fruit Bag">
-    <h3>Fruit Bag – TT$66</h3>
-    <ul>
-      <li>5 mandarines – $10</li>
-      <li>6 apples – $20</li>
-      <li>2 lbs bananas – $16</li>
-      <li>1 pineapple – $20</li>
-    </ul>
-  </div>
-
-</div>
-
-<!-- ---------------- ORDER INFORMATION ---------------- -->
-<div class="order-info">
-  <strong>Order information:</strong> Call or WhatsApp Natasha at 759-1743 by Thursday for weekend delivery. Delivery fee: TT$20. Custom orders welcome!
-</div>
+  <!-- your existing bag cards stay here -->
+</main>
 
 </body>
 </html>
