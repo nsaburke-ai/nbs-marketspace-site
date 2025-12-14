@@ -160,30 +160,7 @@
       opacity:.9;
     }
 
-    /* CHRISTMAS LIGHTS OVERLAY
-       Put your lights file next to index.html and name it EXACTLY: lights.png
-    */
-    .lights-overlay{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:1000;
-
-      background: url("lights.png") center/cover no-repeat;
-
-      /* Make it POP */
-      opacity: 1;
-      mix-blend-mode: screen;
-      filter: saturate(1.25) contrast(1.15) brightness(1.15)
-              drop-shadow(0 0 18px rgba(255,255,255,.25));
-    }
-
-    /* If your lights image is a border with transparent middle,
-       this keeps it nicely framed on any screen. */
-    @media (min-width: 900px){
-      .lights-overlay{
-        background-size: 100% 100%;
-      }
+        }
     }
   </style>
 </head>
@@ -191,9 +168,7 @@
 <body>
 
   <!-- LIGHTS (make sure lights.png exists next to index.html) -->
-  <div class="lights-overlay" aria-hidden="true"></div>
-
-  <!-- NAV -->
+    <!-- NAV -->
   <nav>
     <div class="brand">
       <img src="logo.png" alt="NB's MarketSpace logo">
