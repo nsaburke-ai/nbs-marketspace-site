@@ -5,30 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NB's MarketSpace</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
   <style>
     * { box-sizing: border-box; }
 
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background: #0b0f0c;
+      background:#0b0f0c;
       color:#fff;
     }
 
-    /* LIGHTS OVERLAY */
-    .lights-overlay{
-      position: fixed;
-      inset: 0;
-      background: url("lights-border.png") center / cover no-repeat; /* <-- filename must match */
-      opacity: 0.85;              /* stronger */
-      pointer-events: none;
-      z-index: 8;
-    }
-
+    /* NAV */
     nav{
       position: fixed;
       top:0; left:0; right:0;
@@ -36,27 +23,18 @@
       align-items:center;
       justify-content: space-between;
       padding: 14px 22px;
-      background: rgba(0,0,0,0.35); /* lighter */
+      background: rgba(0,0,0,0.35);
       backdrop-filter: blur(8px);
-      z-index: 20;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 160px;
+      z-index: 30;
     }
     .brand img{
       height: 120px;
       width:auto;
       display:block;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
     }
-
     .nav-links{
       display:flex;
-      align-items:center;
       gap: 18px;
       flex-wrap: wrap;
       justify-content: flex-end;
@@ -66,10 +44,11 @@
       text-decoration:none;
       font-weight:700;
       font-size: 15px;
-      opacity: 0.95;
+      opacity:0.95;
     }
     .nav-links a:hover{ text-decoration: underline; }
 
+    /* HERO */
     .hero{
       position: relative;
       min-height: 100vh;
@@ -78,51 +57,58 @@
       justify-content:center;
       overflow:hidden;
     }
-
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
       background: url("hero.jpg") center / cover no-repeat;
-      filter: brightness(0.92) contrast(1.02) saturate(1.05); /* MUCH lighter */
+      filter: brightness(0.92) contrast(1.02) saturate(1.05);
       transform: scale(1.02);
     }
-
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(
-        rgba(0,0,0,0.10),
-        rgba(0,0,0,0.35)
-      ); /* lighter overlay */
+      background: linear-gradient(rgba(0,0,0,0.10), rgba(0,0,0,0.35));
+    }
+
+    /* LIGHTS overlay */
+    .lights-overlay{
+      position: fixed;
+      inset: 0;
+      background: url("lights-border.png") center / cover no-repeat;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 20; /* above hero, below nav+content */
     }
 
     .hero-content{
       position: relative;
-      z-index: 12;
+      z-index: 25;
       text-align:center;
-      padding: 150px 20px 70px;
+      padding: 150px 20px 70px; /* space for nav */
       max-width: 920px;
     }
 
+    /* NO CURLY FONT: tagline is also Arial */
     .tagline{
-      font-family: "Pacifico", cursive;
-      font-size: clamp(30px, 4vw, 54px);
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 3.6vw, 46px);
       line-height: 1.15;
-      margin: 0 auto 16px;
-      padding: 14px 22px;
+      margin: 0 auto 14px;
+      padding: 14px 20px;
       display: inline-block;
       border-radius: 16px;
-      background: rgba(0,0,0,0.18); /* lighter box */
-      text-shadow: 1px 2px 10px rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.18);
       border: 1px solid rgba(255,255,255,0.16);
+      text-shadow: 1px 2px 10px rgba(0,0,0,0.65);
     }
 
     .subtext{
       font-size: 18px;
-      max-width: 680px;
-      margin: 0 auto 26px;
+      max-width: 700px;
+      margin: 0 auto 22px;
       line-height: 1.7;
       opacity: 0.96;
       background: rgba(0,0,0,0.12);
@@ -163,27 +149,36 @@
     }
     .btn-ghost:hover{ background: rgba(255,255,255,0.16); }
 
-    .footer-note{
-      margin-top: 18px;
-      font-size: 13px;
-      opacity: 0.90;
-      background: rgba(0,0,0,0.12);
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 12px;
+    /* DEBUG: tiny image in corner so we KNOW lights are loading */
+    .debug-lights {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 110px;
+      height: auto;
+      z-index: 40; /* above everything */
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      background: rgba(0,0,0,0.2);
+      padding: 6px;
     }
 
     @media (max-width: 640px){
       .brand img{ height: 95px; }
       .nav-links a{ font-size: 14px; }
       .hero-content{ padding-top: 140px; }
-      .lights-overlay{ opacity: 0.75; }
+      .lights-overlay{ opacity: 0.7; }
+      .debug-lights{ width: 90px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- lights overlay -->
   <div class="lights-overlay" aria-hidden="true"></div>
+
+  <!-- DEBUG: if you see this image, the file path is correct -->
+  <img class="debug-lights" src="lights-border.png" alt="Lights debug">
 
   <nav>
     <div class="brand">
@@ -209,10 +204,6 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="bags.html">View Bag Options &amp; Prices</a>
         <a class="btn btn-ghost" href="about.html">Meet Natasha</a>
-      </div>
-
-      <div class="footer-note">
-        Serving Couva • Weekly updates • Clean, neatly packed produce
       </div>
     </div>
   </main>
