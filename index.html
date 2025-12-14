@@ -6,180 +6,194 @@
   <title>NB's MarketSpace</title>
 
   <style>
-    * { box-sizing: border-box; }
+    :root{
+      --green:#2a4c2f;
+      --green2:#34633c;
+      --text:#ffffff;
+    }
+
+    *{ box-sizing:border-box; }
 
     body{
       margin:0;
       font-family: Arial, sans-serif;
       background:#0b0f0c;
-      color:#fff;
+      color:var(--text);
     }
 
     /* NAV */
     nav{
-      position: fixed;
+      position:fixed;
       top:0; left:0; right:0;
       display:flex;
       align-items:center;
-      justify-content: space-between;
-      padding: 14px 22px;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
-      z-index: 30;
+      justify-content:space-between;
+      padding:12px 22px;
+      background:rgba(0,0,0,0.28);
+      backdrop-filter: blur(7px);
+      z-index:50;
     }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
     .brand img{
-      height: 120px;
+      height:92px;   /* bigger logo */
       width:auto;
       display:block;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
     }
+
     .nav-links{
       display:flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
     }
+
     .nav-links a{
       color:#fff;
       text-decoration:none;
       font-weight:700;
-      font-size: 15px;
-      opacity:0.95;
+      font-size:15px;
+      opacity:.95;
     }
-    .nav-links a:hover{ text-decoration: underline; }
+
+    .nav-links a:hover{
+      text-decoration:underline;
+      opacity:1;
+    }
 
     /* HERO */
     .hero{
-      position: relative;
-      min-height: 100vh;
+      position:relative;
+      min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
     }
+
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
-      background: url("hero.jpg") center / cover no-repeat;
-      filter: brightness(0.92) contrast(1.02) saturate(1.05);
+      background:url("hero.jpg") center/cover no-repeat;
+      filter: brightness(0.95) contrast(1.02);
       transform: scale(1.02);
     }
+
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(rgba(0,0,0,0.10), rgba(0,0,0,0.35));
-    }
-
-    /* LIGHTS overlay */
-    .lights-overlay{
-      position: fixed;
-      inset: 0;
-      background: url("lights-border.png") center / cover no-repeat;
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 20; /* above hero, below nav+content */
+      background: linear-gradient(
+        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.35)
+      );
     }
 
     .hero-content{
-      position: relative;
-      z-index: 25;
+      position:relative;
+      z-index:3;
       text-align:center;
-      padding: 150px 20px 70px; /* space for nav */
-      max-width: 920px;
+      padding:140px 20px 54px; /* space for fixed nav */
+      max-width:980px;
     }
 
-    /* NO CURLY FONT: tagline is also Arial */
-    .tagline{
-      font-family: Arial, sans-serif;
-      font-weight: 800;
-      font-size: clamp(28px, 3.6vw, 46px);
-      line-height: 1.15;
-      margin: 0 auto 14px;
-      padding: 14px 20px;
-      display: inline-block;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.18);
-      border: 1px solid rgba(255,255,255,0.16);
-      text-shadow: 1px 2px 10px rgba(0,0,0,0.65);
+    /* NO CURLY FONT */
+    .headline{
+      font-size: clamp(34px, 4.6vw, 64px);
+      font-weight: 900;
+      letter-spacing: .2px;
+      line-height:1.05;
+      margin:0 0 14px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
 
     .subtext{
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 22px;
-      line-height: 1.7;
-      opacity: 0.96;
-      background: rgba(0,0,0,0.12);
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 14px;
+      font-size: clamp(16px, 1.6vw, 20px);
+      max-width:720px;
+      margin:0 auto 26px;
+      line-height:1.6;
+      opacity:.95;
     }
 
     .cta-row{
       display:flex;
-      gap: 12px;
+      gap:14px;
       justify-content:center;
-      flex-wrap: wrap;
-      margin-top: 10px;
+      flex-wrap:wrap;
+      margin-top:8px;
     }
 
     .btn{
       display:inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 16px;
+      padding:14px 22px;
+      border-radius:14px;
+      font-weight:800;
       text-decoration:none;
-      border: 1px solid rgba(255,255,255,0.16);
-      transition: transform 0.12s ease, background 0.12s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); }
-
-    .btn-primary{
-      background: #2a4c2f;
+      font-size:16px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
       color:#fff;
     }
-    .btn-primary:hover{ background: #34633c; }
 
-    .btn-ghost{
-      background: rgba(255,255,255,0.10);
-      color:#fff;
-    }
-    .btn-ghost:hover{ background: rgba(255,255,255,0.16); }
-
-    /* DEBUG: tiny image in corner so we KNOW lights are loading */
-    .debug-lights {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 110px;
-      height: auto;
-      z-index: 40; /* above everything */
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 10px;
-      background: rgba(0,0,0,0.2);
-      padding: 6px;
+    .btn.primary{
+      background: var(--green);
+      border-color: rgba(0,0,0,.0);
     }
 
-    @media (max-width: 640px){
-      .brand img{ height: 95px; }
-      .nav-links a{ font-size: 14px; }
-      .hero-content{ padding-top: 140px; }
-      .lights-overlay{ opacity: 0.7; }
-      .debug-lights{ width: 90px; }
+    .btn.primary:hover{ background: var(--green2); }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      transition: .15s ease;
+    }
+
+    .footer-note{
+      margin-top:18px;
+      font-size:13px;
+      opacity:.9;
+    }
+
+    /* CHRISTMAS LIGHTS OVERLAY
+       Put your lights file next to index.html and name it EXACTLY: lights.png
+    */
+    .lights-overlay{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1000;
+
+      background: url("lights.png") center/cover no-repeat;
+
+      /* Make it POP */
+      opacity: 1;
+      mix-blend-mode: screen;
+      filter: saturate(1.25) contrast(1.15) brightness(1.15)
+              drop-shadow(0 0 18px rgba(255,255,255,.25));
+    }
+
+    /* If your lights image is a border with transparent middle,
+       this keeps it nicely framed on any screen. */
+    @media (min-width: 900px){
+      .lights-overlay{
+        background-size: 100% 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- lights overlay -->
+
+  <!-- LIGHTS (make sure lights.png exists next to index.html) -->
   <div class="lights-overlay" aria-hidden="true"></div>
 
-  <!-- DEBUG: if you see this image, the file path is correct -->
-  <img class="debug-lights" src="lights-border.png" alt="Lights debug">
-
+  <!-- NAV -->
   <nav>
     <div class="brand">
       <img src="logo.png" alt="NB's MarketSpace logo">
@@ -188,24 +202,29 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
-      <a href="why.html">Why We’re Different</a>
+      <a href="why.html">Why We're Different</a>
       <a href="bags.html">Bags &amp; Prices</a>
     </div>
   </nav>
 
+  <!-- HERO -->
   <main class="hero">
     <div class="hero-content">
-      <div class="tagline">Can’t come to the market? We’ve got you covered!</div>
+      <h1 class="headline">Can’t come to the market? We’ve got you covered!</h1>
 
-      <div class="subtext">
-        Fresh, high-quality produce delivered with care, reliability, and a personal touch — neatly packed and ready for your week.
-      </div>
+      <p class="subtext">
+        Fresh, high-quality produce delivered with care, reliability, and a personal touch —
+        neatly packed and ready for your week.
+      </p>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="bags.html">View Bag Options &amp; Prices</a>
-        <a class="btn btn-ghost" href="about.html">Meet Natasha</a>
+        <a class="btn primary" href="bags.html">View Bag Options &amp; Prices</a>
+        <a class="btn" href="about.html">Meet Natasha</a>
       </div>
+
+      <div class="footer-note">Serving Couva • Weekly updates • Clean, neatly packed produce</div>
     </div>
   </main>
+
 </body>
 </html>
