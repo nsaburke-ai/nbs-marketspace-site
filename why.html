@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Why We’re Different – NB's MarketSpace</title>
+  <title>Why We’re Different – NB’s MarketSpace</title>
 
   <style>
-    :root{
+    :root {
       --green: #2a4c2f;
-      --soft: #eaf6ea;   /* soft green */
+      --soft: #eaf6ea;
       --white: #ffffff;
       --text: #1f2a1f;
       --muted: #4b5b4b;
+      --shadow: 0 6px 18px rgba(0,0,0,0.06);
+      --radius: 16px;
     }
 
-    *{ box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    body{
+    body {
       margin: 0;
       font-family: Arial, sans-serif;
       color: var(--text);
@@ -24,105 +28,145 @@
       line-height: 1.65;
     }
 
-    h1, h2{
+    h1, h2 {
       font-family: Arial, sans-serif !important;
       color: var(--green);
-      margin: 0 0 10px;
+      margin: 0 0 8px;
     }
 
     /* NAV */
-    nav{
+    nav {
       background: var(--green);
       padding: 14px 24px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    nav img{ height: 70px; width:auto; display:block; }
+    nav img {
+      height: 70px;
+      width: auto;
+      display: block;
+    }
 
-    nav a{
-      color:#fff;
-      margin-left:18px;
-      text-decoration:none;
-      font-weight:700;
-      white-space: nowrap;
+    nav a {
+      color: #ffffff;
+      margin-left: 18px;
+      text-decoration: none;
+      font-weight: 700;
       font-size: 15px;
+      white-space: nowrap;
     }
-    nav a:hover{ text-decoration: underline; }
 
-    /* PAGE HEADER */
-    .page-header{
-      padding: 34px 18px 12px;
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* PAGE TITLE */
+    .page-title {
       text-align: center;
+      padding: 36px 18px 16px;
       background: var(--white);
     }
 
-    .page-header h1{
+    .page-title h1 {
       font-size: clamp(24px, 2.6vw, 36px);
     }
 
-    .page-header p{
-      margin: 0 auto;
-      max-width: 900px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    /* STACKED SECTIONS */
-    .section{
+    /* SECTIONS */
+    .section {
       padding: 28px 18px;
     }
 
-    .section.soft{ background: var(--soft); }
-    .section.white{ background: var(--white); }
+    .section.soft {
+      background: var(--soft);
+    }
 
-    .inner{
+    .section.white {
+      background: var(--white);
+    }
+
+    .inner {
       max-width: 980px;
       margin: 0 auto;
-      padding: 18px 18px;
-      border-radius: 16px;
+      padding: 20px 20px;
+      border-radius: var(--radius);
     }
 
-    /* subtle “lift” on white sections for polish */
-    .section.white .inner{
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      border: 1px solid rgba(42,76,47,0.12);
+    .section.white .inner {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(42,76,47,0.14);
     }
 
-    .kicker{
+    /* Subtle background image section */
+    .section.with-bg {
+      position: relative;
+      background: url("nb_site_pics/standard.jpg") center / cover no-repeat;
+    }
+
+    .section.with-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(234, 246, 234, 0.88);
+    }
+
+    .section.with-bg .inner {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    .kicker {
       display: inline-block;
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.6px;
-      color: var(--green);
       text-transform: uppercase;
-      margin-bottom: 8px;
+      color: var(--green);
+      margin-bottom: 6px;
     }
 
-    .bullets{
-      margin: 10px 0 0;
-      padding-left: 18px;
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
     }
-    .bullets li{ margin-bottom: 6px; }
 
-    .cta{
-      display:inline-block;
-      margin-top: 12px;
+    .cta {
+      display: inline-block;
+      margin-top: 14px;
       background: var(--green);
-      color:#fff;
+      color: #ffffff;
       padding: 12px 18px;
-      text-decoration:none;
+      text-decoration: none;
       font-weight: 800;
       border-radius: 12px;
     }
-    .cta:hover{ filter: brightness(1.05); }
 
-    @media (max-width: 650px){
-      nav{ padding: 12px 16px; }
-      nav img{ height: 62px; }
-      nav a{ margin-left: 12px; font-size: 14px; }
-      .inner{ padding: 16px 14px; }
+    .cta:hover {
+      filter: brightness(1.05);
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 12px 16px;
+      }
+
+      nav img {
+        height: 62px;
+      }
+
+      nav a {
+        margin-left: 12px;
+        font-size: 14px;
+      }
+
+      .inner {
+        padding: 16px 14px;
+      }
     }
   </style>
 </head>
@@ -130,61 +174,67 @@
 <body>
 
   <nav>
-    <img src="logo.png" alt="NB's MarketSpace logo">
+    <img src="logo.png" alt="NB’s MarketSpace logo">
     <div>
       <a href="index.html">Home</a>
       <a href="about.html">About Me</a>
       <a href="why.html">Why We’re Different</a>
-      <a href="bags.html">Bags &amp; Prices</a>
+      <a href="bags.html">Bags & Prices</a>
     </div>
   </nav>
 
-  <header class="page-header">
-    <h1>Why We’re Different</h1>
-    <p>
-      NB’s MarketSpace is a personalised produce delivery service built on freshness, reliability, and care —
-      with direct communication and consistent delivery you can trust.
-    </p>
+  <header class="page-title">
+    <h1>Why we’re different</h1>
   </header>
 
-  <!-- soft green -->
+  <!-- Section 1 -->
   <section class="section soft">
     <div class="inner">
-      <div class="kicker">Personalised service</div>
-      <h2>Not one-size-fits-all</h2>
+      <div class="kicker">Personal, Attentive Service</div>
+      <h2>Personal, Attentive Service</h2>
       <p>
-        Unlike large services, NB’s MarketSpace focuses on customised ordering and direct communication —
-        so your bag suits your household and your needs.
+        We take the time to understand what you need and ensure your produce is chosen
+        with care and intention.
       </p>
     </div>
   </section>
 
-  <!-- white -->
+  <!-- Section 2 -->
   <section class="section white">
     <div class="inner">
-      <div class="kicker">Freshness</div>
-      <h2>Hand-selected &amp; neatly packed</h2>
+      <div class="kicker">Reliable Delivery</div>
+      <h2>Reliable Delivery</h2>
       <p>
-        All produce is hand-selected, professionally stored, and neatly packed for each customer.
-        You get clean, high-quality produce with care you can feel.
+        You can depend on us to show up. Orders are prepared carefully and delivered when
+        promised, so you always know what to expect.
       </p>
-      <ul class="bullets">
-        <li>Clean, quality produce</li>
-        <li>Professional handling &amp; storage</li>
-        <li>Neat packing for every order</li>
-      </ul>
     </div>
   </section>
 
-  <!-- soft green -->
-  <section class="section soft">
+  <!-- Section 3 with background image -->
+  <section class="section soft with-bg">
     <div class="inner">
-      <div class="kicker">Reliability</div>
-      <h2>Consistent delivery you can count on</h2>
+      <div class="kicker">Freshness You Can Trust</div>
+      <h2>Freshness You Can Trust</h2>
       <p>
-        Customers enjoy a friendly, dependable experience every week, with trustworthy delivery within the Couva area.
+        Produce is selected for quality and freshness, then handled properly from the
+        market straight to your door.
       </p>
-      <a class="cta" href="bags.html">View Bags &amp; Prices</a>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section class="section white">
+    <div class="inner">
+      <div class="kicker">Care in Every Step</div>
+      <h2>Care in Every Step</h2>
+      <p>
+        From sourcing to packing to delivery, we focus on doing things properly —
+        consistently, thoughtfully, and improving as we go, with care and integrity
+        guiding every decision.
+      </p>
+
+      <a class="cta" href="bags.html">View Bags & Prices</a>
     </div>
   </section>
 
