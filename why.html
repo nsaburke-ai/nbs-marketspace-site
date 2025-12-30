@@ -176,7 +176,45 @@
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-  </style>
+ /* ===== FORCE Card Motion (paste at END of style block) ===== */
+
+.grid .card{
+  opacity: 0 !important;
+  transform: translateY(14px) !important;
+  animation: fadeUp 0.7s ease forwards !important;
+  will-change: transform, opacity;
+}
+
+/* stagger */
+.grid .card:nth-of-type(1){ animation-delay: .10s !important; }
+.grid .card:nth-of-type(2){ animation-delay: .20s !important; }
+.grid .card:nth-of-type(3){ animation-delay: .30s !important; }
+.grid .card:nth-of-type(4){ animation-delay: .40s !important; }
+.grid .card:nth-of-type(5){ animation-delay: .50s !important; }
+.grid .card:nth-of-type(6){ animation-delay: .60s !important; }
+
+/* hover lift (desktop) */
+@media (hover:hover){
+  .grid .card{
+    transition: transform .25s ease, box-shadow .25s ease !important;
+  }
+  .grid .card:hover{
+    transform: translateY(-6px) !important;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12) !important;
+  }
+}
+
+/* tap feedback (mobile) */
+.grid .card:active{
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12) !important;
+}
+
+@keyframes fadeUp{
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+      </style>
 </head>
 
 <body>
