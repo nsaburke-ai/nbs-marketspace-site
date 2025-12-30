@@ -215,7 +215,55 @@
   to   { opacity: 1; transform: translateY(0); }
   .grid .card { outline: 3px solid red !important; }
 }
-      </style>
+/* === Card movement (hover + gentle fade-in) === */
+.card{
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+/* Lift on hover (desktop) */
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* Tap feedback (mobile) */
+.card:active{
+  transform: translateY(-3px);
+}
+
+/* Fade-in on load */
+@keyframes fadeUp{
+  from{ opacity:0; transform: translateY(14px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.grid .card{
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* Stagger timing (1–6 cards) */
+.grid .card:nth-child(1){ animation-delay: 0.10s; }
+.grid .card:nth-child(2){ animation-delay: 0.20s; }
+.grid .card:nth-child(3){ animation-delay: 0.30s; }
+.grid .card:nth-child(4){ animation-delay: 0.40s; }
+.grid .card:nth-child(5){ animation-delay: 0.50s; }
+.grid .card:nth-child(6){ animation-delay: 0.60s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .grid .card{
+    animation: none;
+    opacity: 1;
+  }
+  .card, .card:hover, .card:active{
+    transition: none;
+    transform: none;
+  }
+}
+    
+  </style>
 </head>
 
 <body>
