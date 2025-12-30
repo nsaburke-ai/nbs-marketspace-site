@@ -264,7 +264,34 @@
 }
     /* DEBUG: if you don’t see red outlines, the site is NOT using this file */
 .card { outline: 6px solid red !important; }
+/* === CARD ANIMATION (FOR WHY PAGE) === */
+.animate-card {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: riseIn 0.6s ease forwards;
+}
 
+.animate-card:nth-child(1) { animation-delay: 0.1s; }
+.animate-card:nth-child(2) { animation-delay: 0.2s; }
+.animate-card:nth-child(3) { animation-delay: 0.3s; }
+.animate-card:nth-child(4) { animation-delay: 0.4s; }
+.animate-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes riseIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* hover movement (desktop only) */
+@media (hover: hover) {
+  .animate-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+}
   </style>
 </head>
 
@@ -287,7 +314,7 @@
   <h1>Why We’re Different</h1>
     <div class="grid">
 
-      <div class="card">
+      <div class="card animate-card">
         <span class="kicker">Personal, Attentive Service</span>
         <p>
           We take the time to understand what you need and ensure your produce is chosen
@@ -295,7 +322,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card animate-card">
         <span class="kicker">Reliable Delivery</span>
         <p>
           You can depend on us to show up. Orders are prepared carefully and delivered when
@@ -303,7 +330,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card animate-card">
         <span class="kicker">Freshness You Can Trust</span>
         <p>
           Produce is selected for quality and freshness, then handled properly from the
@@ -311,7 +338,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card animate-card">
         <span class="kicker">Care in Every Step</span>
         <p>
           From sourcing to packing to delivery, we focus on doing things properly -
@@ -320,7 +347,7 @@
         </p>
       </div>
 
-      <div class="card">
+      <div class="card animate-card">
   <span class="kicker">Tailored Deliveries</span>
   <p>
     We offer personalised deliveries based on your preferences, without locking you into a subscription. Each order is handled with the same care and attention.
