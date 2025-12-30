@@ -137,40 +137,45 @@
         font-size: 14px;
         margin-left: 12px;
       }
-    /* Subtle card movement */
-.card {
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
+/* ===== Card motion (desktop + mobile) ===== */
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* Gentle fade-in on load */
-.card {
+/* Fade-in when the page loads (reliable selector) */
+.grid .card{
   opacity: 0;
+  transform: translateY(12px);
   animation: fadeUp 0.6s ease forwards;
 }
 
-/* Staggered animation for each card */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
+/* Stagger (works even if the cards are inside the grid) */
+.grid .card:nth-of-type(1){ animation-delay: 0.10s; }
+.grid .card:nth-of-type(2){ animation-delay: 0.20s; }
+.grid .card:nth-of-type(3){ animation-delay: 0.30s; }
+.grid .card:nth-of-type(4){ animation-delay: 0.40s; }
+.grid .card:nth-of-type(5){ animation-delay: 0.50s; }
+.grid .card:nth-of-type(6){ animation-delay: 0.60s; }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+/* Smooth lift on desktop hover */
+@media (hover:hover){
+  .grid .card{
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .grid .card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
   }
 }
-   
+
+/* Mobile “tap” feedback (phones don’t hover) */
+.grid .card:active,
+.grid .card:focus-within{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+@keyframes fadeUp{
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 
