@@ -251,24 +251,19 @@
 /* ⬇⬇⬇ THIS LINE WAS ALREADY THERE ⬇⬇⬇ */
 </style>
 /* Trust strip under hero */
+/* Trust strip (inline, no bullets) */
 .trust-strip {
   margin-top: 18px;
-}
-
-.trust-strip ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 6px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  justify-content: center;
   font-size: 0.95rem;
 }
 
-.trust-strip li {
-  white-space: nowrap;
+.trust-strip span {
+  opacity: 0.95;
 }
-
   </style>
   </head>
 
@@ -298,12 +293,10 @@
         Welcome to NB’s MarketSpace - your neighbourhood source for quality produce!
       </p>
 <div class="trust-strip">
-  <ul>
-    <li>✔ Personally selected produce</li>
-    <li>✔ Consistent weekly sourcing</li>
-    <li>✔ Clear ordering &amp; delivery process</li>
-    <li>✔ No subscriptions required</li>
-  </ul>
+  <span>Personally selected produce</span>
+  <span>Consistent weekly sourcing</span>
+  <span>Clear ordering &amp; delivery</span>
+  <span>No subscriptions required</span>
 </div>
 
       <div class="cta-row">
