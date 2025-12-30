@@ -6,76 +6,35 @@
   <title>NB’s MarketSpace</title>
 
   <style>
-    body {
-      margin: 0;
+    :root{
+      --brand-green:#1f5c3b;
+      --text:#ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
+      color: var(--text);
+      background:#000;
+    }
+
+    /* HERO BACKGROUND */
+    .hero{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("hero.jpg") center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 110px 18px 70px;
+      text-align:center;
     }
 
     /* NAV */
-    nav {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding: 16px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box;
-    }
-
-    .nav-links a {
-      margin-left: 20px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(
-          rgba(0,0,0,0.45),
-          rgba(0,0,0,0.45)
-        ),
-        url("hero.jpg") center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .hero-content {
-      max-width: 900px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-
-    .subtext {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      margin-bottom: 20px;
-    }
-
-    /* TRUST STRIP */
-    .trust-strip {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(220px, 1fr));
-      gap: 10px 24px;
-      justify-content: center;
-      margin: 20px auto 30px;
-      font-size: 0.95rem;
-      max-width: 600px;
-    }
-
-    .trust-item {
-      text-align: center;
-      opacity: 0.95;
-    }
-
-    /* BUTTONS*
+    .nav{
+      position:absolute;
+      top:0; lef
