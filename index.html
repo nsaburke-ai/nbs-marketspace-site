@@ -195,7 +195,64 @@
 }
 
 </style>
+/* ===== MOBILE FIXES (stops cramped look) ===== */
+@media (max-width: 720px) {
 
+  /* Give the hero more breathing room */
+  .hero {
+    padding-top: 170px;   /* pushes content below the nav */
+    padding-bottom: 60px;
+  }
+
+  /* Make nav stack neatly and not look like a big headline */
+  .nav {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;   /* smaller so it doesn't compete */
+    opacity: 0.9;
+  }
+
+  /* Logo slightly bigger, but controlled */
+  .brand img,
+  .logo img {
+    height: 56px;
+  }
+
+  /* HEADLINE: still bold, but not overpowering */
+  .headline {
+    font-size: 2.1rem;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  /* TAGLINE/SUBTEXT: clearly smaller than headline */
+  .subtext {
+    font-size: 1.02rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    max-width: 28ch;      /* keeps it tidy */
+  }
+
+  /* TRUST STRIP: force it into 2 lines cleanly */
+  .trust-strip {
+    font-size: 0.95rem;
+    max-width: 30ch;      /* creates natural wrapping */
+    margin: 10px auto 18px;
+  }
+
+  /* Buttons: reduce crowding */
+  .cta-row {
+    margin-top: 6px;
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 13px 18px;
+  }
+}
   </style>
 </head>
 
