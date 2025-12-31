@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why We’re Different | NB’s MarketSpace</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#eef6ee;
+      color:#1f2d1f;
+      line-height:1.6;
+    }
+
+    /* NAV */
+    nav{
+      background:#2a4c2f;
+      padding:14px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav img{
+      height:70px;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      margin-left:18px;
+      font-size:14px;
+    }
+
+    nav a:hover{ text-decoration:underline; }
+
+    /* PAGE WRAP */
+    main{
+      max-width:1000px;
+      margin:0 auto;
+      padding:60px 20px 80px;
+    }
+
+    h1{
+      text-align:center;
+      font-size:36px;
+      margin-bottom:40px;
+      color:#2a4c2f;
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:26px;
+    }
+
+    /* CARDS */
+    .card{
+      background:#ffffff;
+      border-radius:14px;
+      padding:26px 24px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+
+      /* animation */
+      opacity:0;
+      transform:translateY(18px);
+      animation:riseIn 0.6s ease forwards;
+    }
+
+    .card:nth-child(1){ animation-delay:.1s; }
+    .card:nth-child(2){ animation-delay:.2s; }
+    .card:nth-child(3){ animation-delay:.3s; }
+    .card:nth-child(4){ animation-delay:.4s; }
+    .card:nth-child(5){ animation-delay:.5s; }
+
+    @keyframes riseIn{
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    @media (hover:hover){
+      .card:hover{
+        transform:translateY(-6px);
+        box-shadow:0 16px 32px rgba(0,0,0,0.12);
+        transition:transform .25s ease, box-shadow .25s ease;
+      }
+    }
+
+    .card h3{
+      margin-top:0;
+      margin-bottom:10px;
+      color:#2a4c2f;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+    }
+
+    .cta{
+      text-align:center;
+      margin-top:50px;
+    }
+
+    .cta a{
+      display:inline-block;
+      background:#2a4c2f;
+      color:#fff;
+      padding:14px 26px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      font-size:16px;
+    }
+
+    .cta a:hover{
+      background:#34633c;
+    }
+ .brand img,
+.logo img {
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 720px) {
+  .brand img,
+  .logo img {
+    height: 56px;
+  }
+}
+</style>
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <img src="logo.png" alt="NB’s MarketSpace logo">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About NB's MarketSpace</a>
+      <a href="why.html">Why We’re Different</a>
+      <a href="bags.html">Bags & Prices</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main>
+    <h1>Why We’re Different</h1>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Personal, Attentive Service</h3>
+        <p>
+          We take the time to understand what you need and ensure your produce is
+          chosen with care and intention.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Reliable Delivery</h3>
+        <p>
+          You can depend on us to show up. Orders are prepared carefully and
+          delivered when promised, so you always know what to expect.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Freshness You Can Trust</h3>
+        <p>
+          Produce is selected for quality and freshness, then handled properly
+          from the market straight to your door.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Care In Every Step</h3>
+        <p>
+          From sourcing to packing to delivery, we focus on doing things properly —
+          consistently, thoughtfully, and improving as we go.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tailored Deliveries</h3>
+        <p>
+          We offer personalised deliveries based on your preferences, without a
+          subscription commitment. Every order receives the same care and
+          attention.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="cta">
+      <a href="bags.html">View Bags & Prices</a>
+    </div>
+  </main>
+
+</body>
+</html>
