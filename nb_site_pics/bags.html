@@ -1,289 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bags &amp; Price List - NB's Marketspace</title>
-  <!-- Import a vivacious script font from Google Fonts for the tagline -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
- <style>
-body {
-  <div class="date-label">Current prices valid for: December 7–13</div>
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f4f7f4;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bag Options & Prices – NB's MarketSpace</title>
+<p class="bags-price-note">
+</p>
 
-/* -------------------------- */
-/*   DATE LABEL AT THE TOP    */
-/* -------------------------- */
-.date-label {
-    background-color: #2c5f2d;
-    color: #fff;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-/* -------------------------- */
-/*      HEADER + LOGO TEXT    */
-/* -------------------------- */
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-}
-
-header img.logo {
-    max-width: 200px;
-    display: block;
-    margin: 0 auto;
-}
-
-header p.tagline {
-    margin-top: 10px;
-    font-family: 'Pacifico', cursive;
-    font-size: 1.4rem;
-}
-
-/* -------------------------- */
-/*      BAG SECTION STYLES    */
-/* -------------------------- */
-.bag-section {
-    max-width: 850px;
-    margin: 25px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
-}
-
-.bag-section h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: #2d4e2a;
-    text-align: left;
-    border-bottom: 2px solid #dfe7df;
-    padding-bottom: 4px;
-}
-
-.bag-section ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 10px;
-}
-
-.bag-section li {
-    padding: 5px 0;
-    font-size: 1.05rem;
-}
-
-/* -------------------------- */
-/*    MEDIUM THUMBNAIL IMAGES */
-/* -------------------------- */
-.bag-image {
-    width: 200px;
-    height: auto;
-    display: block;
-    margin: 10px auto 15px auto;
-    border-radius: 8px;
-}
-
-/* -------------------------- */
-/*     MOBILE RESPONSIVENESS  */
-/* -------------------------- */
-@media (max-width: 600px) {
-    .bag-section {
-        padding: 15px;
+  <style>
+    :root{
+      --bg: #eaf6ea;
+      --panel: #ffffff;
+      --green: #2a4c2f;
+      --text: #1f2a1f;
+      --muted: #4b5b4b;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      --radius: 16px;
     }
 
-    .bag-image {
-        width: 160px;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
 
-    .bag-section li {
-        font-size: 1rem;
+    /* NAV */
+    nav{
+      background: var(--green);
+      padding: 14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
+    nav img{ height:100px; width:auto; display:block; }
+    nav a{
+      color:#fff;
+      margin-left:18px;
+      text-decoration:none;
+      font-weight:bold;
+      white-space:nowrap;
+    }
+    nav a:hover{ text-decoration:underline; }
+
+    /* PAGE */
+    .wrap{
+      max-width: 1200px;
+      margin: 28px auto 44px;
+      padding: 0 18px;
+    }
+
+    .header{
+      text-align:center;
+      padding: 18px 18px 8px;
+    }
+    .header h1{
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-family: Arial, sans-serif !important; /* force non-curly */
+    }
+    .header p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    /* Make last row of 2 cards centred */
+    .grid .card:nth-last-child(-n+2){
+      justify-self: center;
+      width: 100%;
+    }
+
+    .card{
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      padding: 16px;
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .card img{
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 14px;
+      display:block;
+    }
+
+    .title{
+      margin: 12px 0 4px;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 800;
+      font-family: Arial, sans-serif !important;
+    }
+
+    .price{
+      margin: 0 0 10px;
+      font-weight: 800;
+      color: #203220;
+    }
+
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* ORDER BAR */
+    .order{
+      margin-top: 24px;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(42,76,47,0.25); /* even border all around */
+      font-size: 14px;
+    }
+    .order strong{ color: var(--green); }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(240px, 1fr)); }
+      .grid .card:nth-last-child(-n+2){ justify-self: stretch; max-width:none; }
+      .card{ max-width:none; }
+    }
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .delivery-cycle{
+  margin: 18px auto 0;
+  max-width: 980px;
+  background: #ffffff;
+  border: 2px solid #2a4c2f;
+  border-radius: 16px;
+  padding: 18px 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
-</style>
-   body {
-     font-family: Arial, sans-serif;
-     margin: 0;
-     padding: 0;
-     line-height: 1.6;
-     background-color: #f4f7f4;
-   }
-   header {
-     text-align: center;
-     padding: 20px;
-     background-color: #333;
-     color: #fff;
-   }
-   header img.logo {
-     max-width: 200px;
-     display: block;
-     margin: 0 auto;
-   }
-   header p.tagline {
-     margin-top: 10px;
-     /* Apply a lively script font to the tagline */
-     font-family: 'Pacifico', cursive;
-     font-size: 1.5em;
-   }
-   nav {
-     background-color: #2e6930;
-     display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
-     padding: 10px;
-   }
-   nav a {
-     color: #fff;
-     margin: 5px 15px;
-     text-decoration: none;
-     font-weight: bold;
-   }
-   nav a:hover {
-     text-decoration: underline;
-   }
-   /* Crop hero image here too */
-   .hero {
-     width: 100%;
-     height: 400px;
-     object-fit: cover;
-     object-position: bottom center;
-     display: block;
-   }
-   section {
-     padding: 40px 20px;
-     background-color: #fff;
-     margin: 20px auto;
-     max-width: 900px;
-     border-radius: 8px;
-     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-   }
-   h1, h2, h3, h4, h5, h6 {
-     color: #228B22;
-     margin-top: 0;
-   }
-   h3 {
-     margin-bottom: 5px;
-   }
-   ul {
-     list-style: none;
-     padding: 0;
-   }
-   ul li {
-     margin-bottom: 4px;
-   }
-   .bag-section {
-     margin-bottom: 20px;
-     background-color: #faf5e8;
-     padding: 20px;
-     border-radius: 8px;
-   }
-   .bag-image {
-     width: 100%;
-     border-radius: 8px;
-     margin-bottom: 10px;
-   }
-   .fruit-divider {
-     text-align: center;
-     font-size: 1.8rem;
-     line-height: 1;
-     margin: 15px 0;
-   }
+
+.delivery-cycle h3{
+  margin: 0 0 10px;
+  color: #2a4c2f;
+  font-size: 18px;
+  letter-spacing: .2px;
+}
+
+.delivery-cycle .dc-label{
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #2a4c2f;
+}
+
+.delivery-cycle ul{
+  margin: 0;
+  padding-left: 18px;
+}
+
+.delivery-cycle li{
+  margin: 6px 0;
+  line-height: 1.5;
+}
+/* Delivery cycle box */
+.delivery-wrap {
+  max-width: 1100px;      /* SAME width as your bag grid */
+  margin: 40px auto 0;
+  padding: 0 16px;
+}
+
+.delivery-box {
+  background: #ffffff;
+  border: 2px solid #2a4c2f;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.delivery-box h3 {
+  margin-top: 0;
+  color: #2a4c2f;
+}
+
+.delivery-box ul {
+  padding-left: 18px;
+  margin: 10px 0 14px;
+}
+
+.delivery-box li {
+  margin-bottom: 6px;
+}
+
+.weekly-note {
+  margin-top: 14px;
+  font-size: 13px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+/* Weekly update note */
+.weekly-badge{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:6px 14px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  color:#2a4c2f;
+  background:#eef6f0;
+  border-radius:20px;
+}
+
   </style>
 </head>
+
 <body>
-<header>
-  <img src="logo.png" alt="NB's Marketspace Logo" class="logo">
-  <p class="tagline">Can't come to the market? We've got you covered!</p>
-</header>
-<nav>
-  <a href="index.html#about">About Me</a>
-  <a href="index.html#difference">Why We're Different</a>
-  <a href="bags.html">Bags & Price List</a>
-  <a href="index.html#order">How to Order</a>
-</nav>
-<img src="hero.jpg" alt="Fresh produce hero image" class="hero">
-<section id="bags">
-  <h2>Bag Options &amp; Price List</h2>
-  <div class="bag-section">
-    <img class="bag-image" src="https://images.pexels.com/photos/1128678/pexels-photo-1128678.jpeg" alt="Fruits and vegetables">
-    <h3>Seasonings &amp; Salad Bag – TT$54</h3>
+
+  <nav>
+    <img src="logo.png" alt="NB's MarketSpace logo">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About NB's MarketSpace</a>
+      <a href="why.html">Why We're Different</a>
+      <a href="bags.html">Bags & Prices</a>
+      <a href="faq.html">FAQs</a>    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="header">
+      <h1>Bag Options &amp; Price List</h1>
+      </div>
+
+    <div class="grid">
+
+      <!-- 1) Seasonings -->
+      <div class="card">
+        <img src="seasonings.jpg" alt="Seasonings & Salad Bag">
+        <div class="title">Seasonings &amp; Salad Bag</div>
+        <div class="price">TT$55</div>
+        <ul>
+  <li>1 lb onions – $5</li>
+  <li>1 pk garlic – $7</li>
+  <li>1 lb cucumbers – $8</li>
+  <li>1 lb tomatoes – $14</li>
+  <li>2 celery – $8</li>
+  <li>2 chive – $8</li>
+  <li>1 shadon beni – $5</li>
+</ul>
+      </div>
+
+      <!-- 2) Standard -->
+      <div class="card">
+        <img src="standard.jpg" alt="Standard Bag">
+        <div class="title">Standard Bag</div>
+        <div class="price">TT$100</div>
+        <ul>
+  <li>3 lbs Irish potatoes – $10</li>
+  <li>1 lb sweet potatoes – $7</li>
+  <li>1 pk carrots – $7</li>
+  <li>1 lb cucumbers – $8</li>
+  <li>1 lb tomatoes – $14</li>
+  <li>2 lbs pumpkin – $6</li>
+  <li>1 cauliflower – $12</li>
+  <li>10 ochroes – $3</li>
+  <li>1 lb onions – $5</li>
+  <li>1 pk garlic – $7</li>
+  <li>2 celery – $8</li>
+  <li>2 chive – $8</li>
+  <li>1 shadon beni – $5</li>
+</ul>
+      </div>
+
+      <!-- 3) Premium -->
+      <div class="card">
+                <img src="nb_site_pics/premium-bag.jpg" alt="Premium Bag" class="bag-image">
+        <div class="title">Premium Bag</div>
+        <div class="price">TT$150</div>
+        <ul>
+  <li>3 lbs Irish potatoes – $10</li>
+  <li>3 lbs sweet potatoes – $20</li>
+  <li>1 pk carrots – $7</li>
+  <li>2 lbs cucumbers – $16</li>
+  <li>2 lbs tomatoes – $28</li>
+  <li>2 lbs pumpkin – $6</li>
+  <li>1 cauliflower – $12</li>
+  <li>1 cabbage – $10</li>
+  <li>10 ochroes – $3</li>
+  <li>2 lbs onions – $10</li>
+  <li>1 pk garlic – $7</li>
+  <li>2 celery – $8</li>
+  <li>2 chive – $8</li>
+  <li>1 shadon beni – $5</li>
+</ul>
+      </div>
+
+      <!-- 4) Pre-cut -->
+      <div class="card">
+        <img src="nb_site_pics/precut.png" alt="Pre-cut Convenience Bag">
+        <div class="title">Pre-cut Convenience Bag</div>
+        <div class="price">TT$50</div>
+       <ul>
+  <li>pumpkin – $8</li>
+  <li>carrots – $10</li>
+  <li>cabbage – $12</li>
+  <li>bodi – $12</li>
+  <li>callaloo bush – $8</li>
+</ul>
+      </div>
+
+      <!-- 5) Fruit -->
+      <div class="card">
+        <img src="fruit.jpg" alt="Fruit Bag">
+        <div class="title">Fruit Bag</div>
+        <div class="price">TT$86</div>
+        <ul>
+  <li>4 apples – $20</li>
+  <li>2 lbs bananas – $16</li>
+  <li>1 lb grapes – $25</li>
+  <li>1 pineapple – $25</li>
+</ul>
+      </div>
+
+    </div>
+
+<div class="delivery-wrap">
+  <div class="delivery-box">
+        <h3>Current Delivery Cycle</h3>
+
+    <p><strong>Order information:</strong></p>
     <ul>
-      <li>1 lb onions – $5</li>
-      <li>1 pk garlic – $5</li>
-      <li>1 pk cucumbers – $10</li>
-      <li>1 lb tomatoes – $13</li>
-      <li>2 celery – $8</li>
-      <li>2 chive – $8</li>
-      <li>1 shadon beni – $5</li>
+      <li>Call or WhatsApp Natasha at <strong>759-1743</strong></li>
+      <li>Orders close on <strong>Thursday</strong> for <strong>Saturday delivery</strong> (every other weekend)</li>
+      <li><strong>Next order cut-off:</strong> Friday, January 2 at 4.00 p.m.</li>
+      <li><strong>Delivery:</strong> Saturday, January 3</li>
+      <li><strong>Delivery fee:</strong> TT$20</li>
+      <li><strong>(Couva only: TT$10)</strong>
+      <li>Custom orders welcome!</li>
     </ul>
+
+    <p class="weekly-note">
+      LIST MAY BE UPDATED WEEKLY DUE TO MARKET PRICE FLUCTUATIONS
+    </p>
   </div>
-  <div class="fruit-divider">🍎🍌🍇</div>
-  <div class="bag-section">
-    <img class="bag-image" src="standard.jpg" alt="Standard Bag">
-    <h3>Standard Bag – TT$99</h3>
-    <ul>
-        <li>3 lbs Irish potatoes – $10</li>
-        <li>1 lb sweet potatoes – $7</li>
-        <li>1 pk carrots – $7</li>
-        <li>1 lb cucumbers – $10</li>
-        <li>1 lb tomatoes – $13</li>
-        <li>2 lbs pumpkin – $6</li>
-        <li>¼ lb ginger – $7</li>
-        <li>10 ochroes – $3</li>
-        <li>1 lb onions – $5</li>
-        <li>1 pk garlic – $5</li>
-        <li>2 celery – $8</li>
-        <li>2 chive – $8</li>
-        <li>2 shadon beni – $10</li>       
-    </ul>
 </div>
-    </ul>
-  </div>
-  <div class="fruit-divider">🍊🍇🍍</div>
-  <div class="bag-section">
-    <img class="bag-image" src="nb_site_pics/premium bag.jpg" alt="Premium Bag">
-    <h3>Premium Bag – TT$150</h3>
-    <ul>
-        <li>3 lbs Irish potatoes – $10</li>
-        <li>3 lbs sweet potatoes – $20</li>
-        <li>1 pk carrots – $7</li>
-        <li>2 lbs cucumbers – $20</li>
-        <li>2 lbs tomatoes – $26</li>
-        <li>2 lbs pumpkin – $6</li>
-        <li>½ lb ginger – $14</li>
-        <li>20 ochroes – $6</li>
-        <li>2 lbs onions – $10</li>
-        <li>1 pk garlic – $5</li>
-        <li>2 celery – $8</li>
-        <li>2 chive – $8</li>
-        <li>2 shadon beni – $10</li>
-    </ul>
+
+
+  </p>
 </div>
-  <div class="fruit-divider">🍉🍓🍒</div>
-  <div class="bag-section">
-    <img class="bag-image" src="fruit.jpg" alt="Fruit Bag">
-    <h3>Fruit Bag – TT$66</h3>
-    <ul>
-      <li>5 mandarines – $10</li>
-      <li>6 apples – $20</li>
-      <li>2 lbs bananas – $16</li>
-      <li>1 pineapple – $20</li>
-    </ul>
+
+        </div>
+
   </div>
-</section>
-<section id="order">
-  <h2>How to Order</h2>
-  <p>Call or WhatsApp Natasha at 759‑1743 by Thursday for weekend delivery. Delivery fee: TT$20. Custom orders welcome!</p>
-</section>
+
 </body>
 </html>
