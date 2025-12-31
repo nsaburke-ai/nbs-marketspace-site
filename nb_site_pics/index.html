@@ -1,124 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NB's MarketSpace</title>
-  <!-- Import Pacifico font for the tagline -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
-    /* Base styles */
-    body {
-      margin: 0;
+    :root{
+      --green:#2a4c2f;
+      --green2:#34633c;
+      --text:#ffffff;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      background-color: #f0f8f2; /* soft pastel green */
-      line-height: 1.6;
+      background:#0b0f0c;
+      color:var(--text);
     }
-    h1, h2, h3, h4, h5, h6 {
-      color: #2a4c2f; /* forest green headings */
+
+    /* NAV (no blur = no mobile flicker) */
+    nav{
+      position:fixed;
+      top:0; left:0; right:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 18px;
+      background:rgba(0,0,0,0.72);
+      z-index:50;
     }
-    /* Navigation bar styling */
-    nav {
-      display: flex;
-      align-items: center;
-      background-color: #2a4c2f; /* dark green bar */
-      color: #ffffff;
-      padding: 10px 20px;
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 120px;
     }
-    nav img.logo {
-      height: 80px;
-      margin-right: 20px;
+
+    .brand img{
+      height:96px;   /* Bigger logo */
+      width:auto;
+      display:block;
     }
-    nav a {
-      color: #ffffff;
-      margin-right: 20px;
-      text-decoration: none;
-      font-weight: bold;
+
+    .nav-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      opacity:.95;
+      white-space:nowrap;
     }
-    /* Hero section */
-    .hero-container {
-      position: relative;
+
+    .nav-links a:hover{
+      text-decoration:underline;
+      opacity:1;
     }
-    .hero-container img.hero {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      object-position: bottom center;
-      display: block;
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
-    .hero-container .tagline {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Pacifico', cursive;
-      font-size: 2em;
-      color: #ffffff;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("hero.jpg") center/cover no-repeat;
+      filter: brightness(0.9) contrast(1.03);
+      transform: scale(1.02);
     }
-    /* Section styling */
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.55)
+      );
     }
-    /* Tinted background for readable sections */
-    section.tinted {
-      background-color: #ffffffcc; /* semi-transparent white */
-      border-radius: 8px;
-      margin-bottom: 40px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .hero-content{
+      position:relative;
+      z-index:3;
+      text-align:center;
+      padding:140px 18px 54px; /* space for fixed nav */
+      max-width:980px;
     }
-    /* Bag intro button */
-    .bag-intro {
-      text-align: center;
+
+    .headline{
+      font-size: clamp(28px, 4vw, 52px); /* reduced a bit */
+      font-weight: 900;
+      letter-spacing: .2px;
+      line-height:1.12;
+      margin:0 0 14px;
+      text-shadow: 0 10px 28px rgba(0,0,0,.35);
     }
-    .bag-intro a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #2a4c2f;
-      font-weight: bold;
-      text-decoration: underline;
+
+    .subtext{
+      font-size: clamp(16px, 1.6vw, 20px);
+      max-width:760px;
+      margin:0 auto 24px;
+      line-height:1.6;
+      opacity:.95;
+      background: rgba(0,0,0,0.25);
+      padding: 10px 14px;
+      border-radius: 12px;
+      display:inline-block;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      font-size:15px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      color:#fff;
+    }
+
+    .btn.primary{
+      background: var(--green);
+      border-color: rgba(0,0,0,0);
+    }
+
+    .btn.primary:hover{ background: var(--green2); }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      transition: .15s ease;
+    }
+
+    .footer-note{
+      margin-top:18px;
+      font-size:13px;
+      opacity:.9;
+    }
+
+    /* MOBILE: keep nav from feeling cramped */
+    @media (max-width: 720px){
+      .brand img{ height:76px; }
+      .nav-links a{ font-size:13px; }
+      .nav-links{ gap:12px; }
+      nav{ padding:10px 12px; }
+      .hero-content{ padding-top:120px; }
     }
   </style>
 </head>
+
 <body>
-  <header class="hero-container">
-    <img src="hero.jpg" alt="Wooden table with fresh produce" class="hero">
-    <div class="tagline">Can't come to the market? We've got you covered!</div>
-  </header>
+
+  <!-- NAV -->
   <nav>
-    <img src="logo.png" alt="NB's MarketSpace logo" class="logo">
-    <a href="#mission">Mission Statement</a>
-    <a href="#about">About Me</a>
-    <a href="#why">Why We're Different</a>
-    <a href="#bags">Bag Options &amp; Price List</a>
+    <div class="brand">
+      <img src="logo.png" alt="NB's MarketSpace logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="bags.html">Bags &amp; Prices</a>
+      <a href="about.html">About Me</a>
+      <a href="why.html">Why We’re Different</a>
+      <a href="faq.html">FAQs</a>
+    </div>
   </nav>
-  <section id="mission" class="tinted">
-    <h2>Mission Statement</h2>
-    <p>To make healthy eating easy by delivering fresh, high‑quality produce with care, reliability, and a personal touch.</p>
-  </section>
-  <section id="about" class="tinted">
-    <h2>About Me</h2>
-    <p>At NB’s MarketSpace, healthy living isn’t new to me — it’s how I grew up. My father planted everything from caraillee and barbadine to callaloo bush and bodi, and every evening we picked our own mint, fever grass, or lime buds for tea. My mother always had fresh seasonings growing, so our kitchen was always full of real, wholesome food.</p>
-    <p>Those simple moments shaped my love for whole foods and for knowing exactly where your food comes from. When my brother started selling produce, something lit up in me. One morning at 3 a.m. he took me to the market and showed me the ropes — and that’s how NB’s MarketSpace began.</p>
-    <p>It’s plenty of work, but it brings me joy. I love helping people, supporting busy families, and serving my community. Whether you can’t make it to the market or just need an extra hand, I’m happy to make life a bit easier.</p>
-    <p>And I'm not doing it alone – my children help when they can, and my husband is my steady support and encourager. There’s love and teamwork behind every bag.</p>
-    <p>NB’s MarketSpace is more than produce — it’s family, care, and freshness delivered straight to your door.</p>
-  </section>
-  <section id="why" class="tinted">
-    <h2>Why We're Different</h2>
-    <p>NB’s MarketSpace offers a personalised produce delivery service centred around freshness, reliability, and care. All produce is hand-selected, professionally stored, and neatly packed for each customer.</p>
-    <p>Unlike large services, NB’s MarketSpace provides customised ordering, direct communication, and consistent, trustworthy delivery within the Couva area. Customers enjoy clean, high‑quality produce with a friendly, dependable experience every week.</p>
-  </section>
-  <section id="bags" class="bag-intro tinted">
-    <h2>Bag Options &amp; Price List</h2>
-    <p>Check out all our bag options and prices on a dedicated page.</p>
-    <a href="bags.html">Go to Bags &amp; Price List</a>
-  </section>
+
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-content">
+      <h1 class="headline">Can’t come to market? We’ve got you covered!</h1>
+
+      <div class="subtext">
+        Fresh, high-quality produce delivered with care, reliability, and a personal touch —
+        serving Couva and surrounding areas.
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="bags.html">View Bag Options &amp; Prices</a>
+        <a class="btn" href="about.html">Meet Natasha</a>
+      </div>
+
+      <div class="footer-note">
+        Weekly updates • Clean, neatly packed produce • Custom orders welcome
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
