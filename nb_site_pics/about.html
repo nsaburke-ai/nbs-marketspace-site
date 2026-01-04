@@ -111,6 +111,143 @@
         padding: 22px 18px;
       }
     }
+ /* ===== ABOUT PAGE: PROFESSIONAL LAYOUT ===== */
+.about-page{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 18px 70px;
+}
+
+.about-hero{
+  margin-top: 18px;
+  padding: 26px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(31,92,59,.10);
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+.about-kicker{
+  margin: 0 0 10px;
+  font-weight: 800;
+  color: #1f5c3b;
+  font-size: 1.1rem;
+}
+
+.about-hero p{
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1.02rem;
+}
+
+.cred-strip{
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.cred{
+  background: rgba(31,92,59,.06);
+  border: 1px solid rgba(31,92,59,.12);
+  border-radius: 14px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.cred .label{
+  display:block;
+  font-weight: 800;
+  color:#1f5c3b;
+  font-size:.95rem;
+  margin-bottom: 4px;
+}
+
+.cred .desc{
+  display:block;
+  font-size:.9rem;
+  line-height: 1.35;
+  color:#2b2b2b;
+}
+
+.about-grid{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.about-card{
+  background:#ffffff;
+  border: 1px solid rgba(31,92,59,.10);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+.about-card h3{
+  margin: 0 0 8px;
+  color:#1f5c3b;
+  font-size: 1.05rem;
+}
+
+.about-card p{
+  margin: 0;
+  line-height: 1.55;
+}
+
+.about-cta{
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(31,92,59,.10);
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.about-cta .cta-text{
+  margin:0;
+  line-height: 1.5;
+}
+
+.about-cta .cta-actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* If you already have button styles, this won’t break them */
+.btn{
+  display:inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration:none;
+  font-weight: 800;
+}
+
+.btn.primary{
+  background:#1f5c3b;
+  color:#fff;
+  border: 2px solid #1f5c3b;
+}
+
+.btn.ghost{
+  background: transparent;
+  color:#1f5c3b;
+  border: 2px solid #1f5c3b;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .cred-strip{ grid-template-columns: 1fr 1fr; }
+  .about-grid{ grid-template-columns: 1fr; }
+}
+ 
   </style>
 </head>
 
@@ -130,14 +267,60 @@
   <main class="wrap">
     <h1>About NB’s MarketSpace</h1>
 
-    <div class="card">
-      <p>
-     NB’s MarketSpace was created to simplify access to fresh market produce for busy households. The service is designed for those who value reliability, clear communication, and produce personally selected with care.
+  <section class="about-page">
 
-From market selection to final delivery, each order is handled with consistent attention to detail - an approach that keeps customers returning cycle after cycle.
-      </p>
+  <div class="about-hero">
+    <div class="about-kicker">A produce service built on consistency, care, and clear standards</div>
+    <p>
+      NB’s MarketSpace is a personalised produce service designed for households that value reliability,
+      clear communication, and market-fresh quality. Each order follows a consistent process — from market
+      selection and quality checks to careful packing and delivery — ensuring customers receive produce they
+      can rely on week after week.
+    </p>
+  </div>
+
+  <div class="cred-strip">
+    <div class="cred">
+      <span class="label">Consistent sourcing</span>
+      <span class="desc">Regular market routines and quality checks</span>
     </div>
-  </main>
+    <div class="cred">
+      <span class="label">Careful handling</span>
+      <span class="desc">Packed with intention for freshness</span>
+    </div>
+    <div class="cred">
+      <span class="label">Clear process</span>
+      <span class="desc">Straightforward ordering and delivery</span>
+    </div>
+    <div class="cred">
+      <span class="label">Flexible ordering</span>
+      <span class="desc">No subscriptions or fixed boxes</span>
+    </div>
+  </div>
 
-</body>
-</html>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>Personal, Attentive Service</h3>
+      <p>We take the time to understand what you need and ensure your order is handled with care and intention.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>Flexible Ordering</h3>
+      <p>We don’t lock you into subscriptions or fixed boxes. Order when you need and adjust based on your household.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>Market-Fresh Quality</h3>
+      <p>Produce is selected for freshness and handled properly from market to door, so it arrives in great condition.</p>
+    </div>
+  </div>
+
+  <div class="about-cta">
+    <p class="cta-text"><strong>Ready to order?</strong> View bag options and pricing, or review the ordering process.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="/bags.html">Bags &amp; Prices</a>
+      <a class="btn ghost" href="/faq.html">Ordering FAQs</a>
+    </div>
+  </div>
+
+</section>
