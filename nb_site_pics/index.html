@@ -1,703 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-  <title>NB’s MarketSpace | Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NB’s MarketSpace | Personalised Produce Delivery</title>
 
   <style>
     :root{
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --text: #121826;
-      --muted: #4b5563;
-      --border: rgba(17, 24, 39, 0.12);
-      --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
-      --shadow-soft: 0 6px 18px rgba(17, 24, 39, 0.07);
-
-      /* Brand (subtle, established) */
-      --brand: #0f4d3a;
-      --brand-2: #0b3c2d;
-      --brand-wash: rgba(15, 77, 58, 0.08);
-
-      --radius: 16px;
-      --radius-sm: 12px;
-      --max: 1120px;
-
-      --pad-x: 20px;
-      --pad-y: 56px;
-
-      --h1: clamp(30px, 4vw, 44px);
-      --h2: clamp(20px, 2.5vw, 28px);
-      --h3: 18px;
-
-      --line: 1.55;
-      --line-tight: 1.2;
-
-      --focus: 0 0 0 4px rgba(15, 77, 58, 0.22);
+      --green:#1f5c3b;
+      --bg:#f3f7f4;
+      --ink:#1f1f1f;
+      --line: rgba(31,92,59,.14);
+      --shadow: 0 14px 34px rgba(0,0,0,.10);
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
       background: var(--bg);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      line-height: var(--line);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
-
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 var(--pad-x);
+    /* ===== NAV ===== */
+    nav{
+      background:#2f5a3a;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
 
-    .skip-link{
-      position:absolute; left:-999px; top:auto;
-      width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      left: 16px; top: 16px;
-      width: auto; height: auto;
-      padding: 10px 12px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      box-shadow: var(--shadow-soft);
-      z-index: 9999;
+    nav img{
+      height:72px;
+      width:auto;
+      display:block;
     }
 
-    /* Header */
-    .site-header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
     }
 
-    .header-inner{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:.95rem;
+      opacity:.95;
     }
 
-    .brand{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 220px;
-    }
-    .brand-logo{
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(17,24,39,0.06);
-      background: #fff;
-      display: grid;
-      place-items: center;
-    }
-    .brand-logo img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .brand-text{
-      display: flex;
-      flex-direction: column;
-      line-height: var(--line-tight);
-    }
-    .brand-name{
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .brand-tag{
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 3px;
+    .nav-links a:hover{
+      text-decoration:underline;
+      opacity:1;
     }
 
-    /* Nav */
-    .nav{
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .nav a{
-      padding: 10px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.2px;
-      transition: background 140ms ease, color 140ms ease;
-    }
-    .nav a:hover{
-      background: var(--brand-wash);
-      color: var(--brand-2);
-    }
-    .nav a[aria-current="page"]{
-      background: var(--brand-wash);
-      color: var(--brand-2);
-      box-shadow: inset 0 0 0 1px rgba(15, 77, 58, 0.18);
-    }
-
-    /* Mobile nav button */
-    .nav-toggle{
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      box-shadow: 0 4px 12px rgba(17,24,39,0.06);
-      cursor: pointer;
-      transition: transform 140ms ease, box-shadow 140ms ease;
-    }
-    .nav-toggle:active{ transform: scale(0.98); }
-    .nav-toggle:focus{ outline: none; box-shadow: var(--shadow-soft), var(--focus); }
-
-    .hamburger{
-      width: 18px;
-      height: 12px;
-      position: relative;
-    }
-    .hamburger span{
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: transform 160ms ease, top 160ms ease, opacity 160ms ease;
-    }
-    .hamburger span:nth-child(1){ top: 0; }
-    .hamburger span:nth-child(2){ top: 5px; }
-    .hamburger span:nth-child(3){ top: 10px; }
-
-    .mobile-nav{
-      display: none;
-      border-top: 1px solid var(--border);
-      padding: 10px 0 14px;
-    }
-    .mobile-nav a{
-      display: block;
-      padding: 12px 12px;
-      margin: 6px 0;
-      border-radius: 12px;
-      color: var(--muted);
-      font-weight: 600;
-      background: transparent;
-    }
-    .mobile-nav a:hover{
-      background: var(--brand-wash);
-      color: var(--brand-2);
-    }
-    .mobile-nav a[aria-current="page"]{
-      background: var(--brand-wash);
-      color: var(--brand-2);
-      box-shadow: inset 0 0 0 1px rgba(15, 77, 58, 0.18);
-    }
-
-    @media (max-width: 860px){
-      .brand{ min-width: auto; }
-      .nav{ display: none; }
-      .nav-toggle{ display: inline-flex; }
-      .mobile-nav{ display: none; }
-      .mobile-nav.open{ display: block; }
-    }
-
-    /* Hero */
+    /* ===== HERO ===== */
     .hero{
+      min-height: calc(100vh - 96px);
       background:
-        linear-gradient(180deg, rgba(15,77,58,0.08), rgba(255,255,255,0) 55%),
-        radial-gradient(900px 420px at 20% -10%, rgba(15,77,58,0.12), transparent 60%),
-        radial-gradient(700px 360px at 100% 0%, rgba(15,77,58,0.10), transparent 60%);
-      border-bottom: 1px solid var(--border);
-      padding: 44px 0;
-    }
-    .hero-inner{
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 28px;
-      align-items: center;
-    }
-    .hero h1{
-      font-size: var(--h1);
-      line-height: var(--line-tight);
-      margin: 0 0 10px;
-      letter-spacing: -0.2px;
-    }
-    .hero p{
-      margin: 0;
-      color: var(--muted);
-      max-width: 64ch;
-    }
-    .hero-actions{
-      margin-top: 18px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .hero-card{
-      background: rgba(255,255,255,0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-    }
-    .hero-card img{
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
-    .hero-card .cap{
-      padding: 14px 14px 16px;
-      font-size: 13px;
-      color: var(--muted);
+        linear-gradient(rgba(243,247,244,.92), rgba(243,247,244,.92)),
+        url("hero.jpg") center / cover no-repeat;
+      padding: 70px 0 90px;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
 
-    @media (max-width: 860px){
-      .hero-inner{ grid-template-columns: 1fr; }
-      .hero-card img{ height: 230px; }
+    .container{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px;
     }
 
-    /* Page */
-    .page{
-      padding: var(--pad-y) 0;
-    }
-
-    /* Components */
-    .section{
-      padding: 26px 0;
-    }
-    .section h2{
-      font-size: var(--h2);
-      margin: 0 0 10px;
-      line-height: var(--line-tight);
-    }
-    .section .lead{
-      margin: 0;
-      color: var(--muted);
-      max-width: 74ch;
-    }
-
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .col-4{ grid-column: span 4; }
-    .col-6{ grid-column: span 6; }
-    .col-8{ grid-column: span 8; }
-    .col-12{ grid-column: span 12; }
-
-    @media (max-width: 860px){
-      .col-4, .col-6, .col-8{ grid-column: span 12; }
-    }
-
-    .card{
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      padding: 18px;
-    }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: var(--h3);
-      line-height: var(--line-tight);
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .card-link{
-      display: block;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      background: var(--surface);
-      transition: transform 140ms ease, box-shadow 140ms ease;
-    }
-    .card-link:hover{
-      transform: translateY(-2px);
+    .hero-panel{
+      background:#fff;
+      border-radius:22px;
+      border:1px solid var(--line);
       box-shadow: var(--shadow);
+      padding:34px 34px 30px;
+      border-left:7px solid var(--green);
     }
-    .card-link .img{
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
+
+    h1{
+      margin:0 0 14px;
+      color:var(--green);
+      font-size:2.6rem;
+      line-height:1.15;
+      letter-spacing:.2px;
     }
-    .card-link .content{
-      padding: 16px 16px 18px;
+
+    .tagline{
+      margin:0 0 18px;
+      font-size:1.1rem;
+      line-height:1.6;
+      max-width:760px;
     }
-    .pill{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(15,77,58,0.18);
-      background: rgba(15,77,58,0.06);
-      color: var(--brand-2);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.2px;
+
+    /* ===== TRUST LINE ===== */
+    .trust{
+      margin:0 0 22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px 18px;
+      font-weight:800;
+      color:var(--green);
+      font-size:.95rem;
     }
-    .meta{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
+
+    .trust span::before{
+      content:"• ";
+      opacity:.75;
+    }
+
+    /* ===== CTA ===== */
+    .cta{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:10px;
     }
 
     .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(15,77,58,0.26);
-      background: linear-gradient(180deg, rgba(15,77,58,0.12), rgba(15,77,58,0.06));
-      color: var(--brand-2);
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
-      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-    .btn:hover{
-      box-shadow: 0 10px 26px rgba(15,77,58,0.14);
-      background: linear-gradient(180deg, rgba(15,77,58,0.16), rgba(15,77,58,0.08));
-    }
-    .btn:active{ transform: translateY(1px); }
-    .btn:focus{ outline: none; box-shadow: 0 0 0 4px rgba(15,77,58,0.22), 0 10px 26px rgba(15,77,58,0.12); }
-
-    .btn-ghost{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.7);
-      color: var(--text);
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
-      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-    .btn-ghost:hover{
-      box-shadow: 0 10px 26px rgba(17,24,39,0.10);
-      background: rgba(17,24,39,0.03);
-    }
-    .btn-ghost:active{ transform: translateY(1px); }
-    .btn-ghost:focus{ outline: none; box-shadow: var(--shadow-soft), var(--focus); }
-
-    .divider{
-      margin: 14px 0 0;
-      border-top: 1px solid var(--border);
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:900;
+      border:2px solid var(--green);
+      font-size:1rem;
     }
 
-    .notice{
-      border: 1px solid rgba(15,77,58,0.18);
-      background: rgba(15,77,58,0.05);
-      border-radius: var(--radius);
-      padding: 16px 16px 18px;
-      color: var(--muted);
+    .btn.primary{
+      background:var(--green);
+      color:#fff;
     }
-    .notice strong{ color: var(--brand-2); }
 
-    /* Footer */
-    .site-footer{
-      border-top: 1px solid var(--border);
-      padding: 22px 0;
-      color: var(--muted);
-      font-size: 13px;
+    .btn.ghost{
+      background:transparent;
+      color:var(--green);
     }
-    .footer-inner{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .foot-links{
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .foot-links a{
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-    }
-    .foot-links a:hover{
-      border-color: var(--border);
-      background: rgba(17,24,39,0.03);
+
+    /* ===== MOBILE ===== */
+    @media (max-width:720px){
+      nav{ padding:12px 14px; }
+      nav img{ height:60px; }
+      .nav-links{ justify-content:center; }
+
+      .hero{ padding:48px 0 70px; }
+
+      .hero-panel{
+        padding:24px 20px 24px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .tagline{
+        font-size:1.02rem;
+      }
+
+      .cta .btn{
+        width:100%;
+        text-align:center;
+      }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <a class="brand" href="/" aria-label="Go to Home">
-          <span class="brand-logo">
-            <img src="logo.png" alt="NB’s MarketSpace logo" />
-          </span>
-          <span class="brand-text">
-            <span class="brand-name">NB’s MarketSpace</span>
-            <span class="brand-tag">Bringing the Market to You</span>
-          </span>
-        </a>
-
-        <nav class="nav" aria-label="Primary">
-          <a href="/">Home</a>
-          <a href="/about.html">About</a>
-          <a href="/why.html">Why NB’s</a>
-          <a href="/bags.html">Bags</a>
-          <a href="/faq.html">FAQ</a>
-        </nav>
-
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-          <span class="hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
-      </div>
-
-      <nav id="mobileNav" class="mobile-nav" aria-label="Mobile">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/why.html">Why NB’s</a>
-        <a href="/bags.html">Bags</a>
-        <a href="/faq.html">FAQ</a>
-      </nav>
+  <nav>
+    <img src="logo.png" alt="NB’s MarketSpace logo">
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/bags.html">Bags &amp; Prices</a>
+      <a href="/about.html">About NB's MarketSpace</a>
+      <a href="/why.html">Why We’re Different</a>
+      <a href="/faq.html">FAQs</a>
     </div>
-  </header>
+  </nav>
 
   <section class="hero">
     <div class="container">
-      <div class="hero-inner">
-        <div>
-          <div class="pill">Personalised produce delivery</div>
-          <h1>Handpicked market produce, cleaned and packed for delivery.</h1>
-          <p>
-            NB’s MarketSpace handles selection, preparation, and packaging with clear standards—so you receive
-            fresh produce that’s ready for your kitchen, without the market run.
-          </p>
 
-          <div class="hero-actions">
-            <a class="btn" href="/bags.html">View Bags</a>
-            <a class="btn-ghost" href="/faq.html">How it Works</a>
-          </div>
+      <div class="hero-panel">
+        <h1>Can’t come to market?<br>We’ve got you covered.</h1>
+
+        <p class="tagline">
+          NB’s MarketSpace provides carefully selected, market-fresh produce for households
+          that value reliability, clear communication, and thoughtful handling.
+        </p>
+
+        <div class="trust">
+          <span>Personally selected produce</span>
+          <span>Consistent sourcing standards</span>
+          <span>Clear ordering &amp; delivery process</span>
+          <span>No subscriptions required</span>
         </div>
 
-        <div class="hero-card" aria-label="Hero image">
-          <img src="hero.jpg" alt="Fresh produce prepared for delivery" />
-          <div class="cap">Quality checks, cleaning, and careful packing — handled end-to-end.</div>
+        <div class="cta">
+          <a class="btn primary" href="/bags.html">View Bags &amp; Prices</a>
+          <a class="btn ghost" href="/about.html">About NB’s MarketSpace</a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <main id="main" class="page">
-    <div class="container">
-
-      <section class="section">
-        <h2>How it works</h2>
-        <p class="lead">
-          A straightforward process with clean handoffs and clear expectations.
-        </p>
-
-        <div class="grid">
-          <div class="card col-4">
-            <h3>1) You place your order</h3>
-            <p>Choose a bag, request specific items, or share a list. Where options exist, preferences are confirmed.</p>
-          </div>
-          <div class="card col-4">
-            <h3>2) Produce is handpicked</h3>
-            <p>Market selection is done with quality in mind—freshness, condition, and suitability for your household.</p>
-          </div>
-          <div class="card col-4">
-            <h3>3) Cleaning, checks, and packing</h3>
-            <p>Items are cleaned and packed carefully. Substitutions are confirmed before fulfilment.</p>
-          </div>
-        </div>
-
-        <div class="grid" style="margin-top:16px;">
-          <div class="card col-6">
-            <h3>4) Delivery window shared</h3>
-            <p>Once packing is finalised, a delivery window is provided for smooth receipt.</p>
-          </div>
-          <div class="card col-6">
-            <h3>5) Ready for your kitchen</h3>
-            <p>Produce arrives organised and secure—so you can store, prep, or cook with less friction.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="section">
-        <h2>Start with a bag</h2>
-        <p class="lead">
-          Bags are designed for practical home use—balanced staples, optional add-ons, and clear sizing.
-        </p>
-
-        <div class="grid">
-          <a class="card-link col-6" href="/bags.html" aria-label="View Premium Bag options">
-            <img class="img" src="premium-bag.jpg" alt="Premium bag produce selection" />
-            <div class="content">
-              <div class="pill">Premium Bag</div>
-              <h3 style="margin:10px 0 0; font-size: 20px; line-height: var(--line-tight);">Balanced, household-ready selection</h3>
-              <p class="meta">Staples and variety, selected for freshness and everyday cooking.</p>
-            </div>
-          </a>
-
-          <a class="card-link col-6" href="/bags.html" aria-label="View Precut Bag options">
-            <img class="img" src="precut-bag.jpg" alt="Precut bag produce selection" />
-            <div class="content">
-              <div class="pill">Precut Bag</div>
-              <h3 style="margin:10px 0 0; font-size: 20px; line-height: var(--line-tight);">Prepared produce to save time</h3>
-              <p class="meta">A practical option when you need quicker prep and a smoother cooking flow.</p>
-            </div>
-          </a>
-        </div>
-
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="/bags.html">View All Bags</a>
-          <a class="btn-ghost" href="/why.html">Why NB’s</a>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="section">
-        <h2>Quality standards</h2>
-        <p class="lead">
-          The goal is simple: produce that looks good, keeps well, and performs properly in your kitchen.
-        </p>
-
-        <div class="grid">
-          <div class="card col-4">
-            <h3>Selection discipline</h3>
-            <p>Items are chosen based on freshness and condition—not just availability.</p>
-          </div>
-          <div class="card col-4">
-            <h3>Clean packing</h3>
-            <p>Cleaning and packing are handled with care to reduce mess and protect your produce.</p>
-          </div>
-          <div class="card col-4">
-            <h3>Clear substitutions</h3>
-            <p>Where substitutions are needed, confirmation happens before fulfilment.</p>
-          </div>
-        </div>
-
-        <div class="grid" style="margin-top:16px;">
-          <div class="notice col-12">
-            <strong>Operational note:</strong> Delivery timing is shared after packing is finalised, to keep communication accurate and dependable.
-          </div>
-        </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="section">
-        <h2>Know what to expect</h2>
-        <p class="lead">
-          FAQs cover ordering, substitutions, delivery windows, and what’s included—so the process stays smooth.
-        </p>
-
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="/faq.html">View FAQ</a>
-          <a class="btn-ghost" href="/about.html">About NB’s</a>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>© <span id="year"></span> NB’s MarketSpace</div>
-        <div class="foot-links">
-          <a href="/about.html">About</a>
-          <a href="/bags.html">Bags</a>
-          <a href="/faq.html">FAQ</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Auto set active nav link (desktop + mobile) based on pathname
-    (function setActiveNav(){
-      const path = (location.pathname || "/").toLowerCase();
-      const normalized = (path === "" || path === "/index.html") ? "/" : path;
-
-      const allLinks = document.querySelectorAll('nav a[href]');
-      allLinks.forEach(a => {
-        const href = (a.getAttribute('href') || "").toLowerCase();
-        if (!href) return;
-
-        const isHome = href === "/" && normalized === "/";
-        const isExact = href !== "/" && href === normalized;
-
-        if (isHome || isExact) {
-          a.setAttribute("aria-current", "page");
-        } else {
-          a.removeAttribute("aria-current");
-        }
-      });
-    })();
-
-    // Mobile menu toggle
-    (function mobileMenu(){
-      const btn = document.querySelector('.nav-toggle');
-      const mobile = document.getElementById('mobileNav');
-      if (!btn || !mobile) return;
-
-      btn.addEventListener('click', () => {
-        const open = mobile.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-
-      // Close menu after clicking a link
-      mobile.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          mobile.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
