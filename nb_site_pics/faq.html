@@ -7,90 +7,221 @@
 
   <style>
     :root{
-      --green:#2a4c2f;
-      --soft:#f3fbf5;
-      --text:#1f2a1f;
+      --green:#1f5c3b;
+      --bg:#f3f7f4;
+      --ink:#1f1f1f;
+      --line: rgba(31,92,59,.14);
+      --shadow: 0 14px 34px rgba(0,0,0,.10);
+      --shadow2: 0 10px 26px rgba(0,0,0,.08);
     }
 
     *{ box-sizing:border-box; }
 
     body{
       margin:0;
-      font-family: Arial, sans-serif;
-      background:#f7faf7;
-      color:var(--text);
-      line-height:1.6;
+      min-height:100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background: var(--bg);
     }
 
-    /* NAV */
+    /* ===== NAV ===== */
     nav{
-      background: var(--green);
-      padding: 14px 22px;
+      background: #2f5a3a;
+      padding: 14px 18px;
       display:flex;
       align-items:center;
-      justify-content: space-between;
+      justify-content:space-between;
+      gap:16px;
     }
 
     nav img{
-      height: 90px;
+      height: 72px;
       width:auto;
+      display:block;
     }
 
-    nav a{
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .nav-links a{
       color:#fff;
       text-decoration:none;
-      font-weight:700;
-      margin-left:18px;
-      font-size:15px;
+      font-weight:800;
+      font-size:.95rem;
+      opacity:.95;
     }
 
-    nav a:hover{ text-decoration:underline; }
+    .nav-links a:hover{
+      text-decoration:underline;
+      opacity:1;
+    }
 
-    /* PAGE CONTENT */
-    main{
-      max-width: 900px;
-      margin: 40px auto 60px;
-      padding: 0 16px;
+    /* ===== PAGE BACKGROUND BAND ===== */
+    .faq-bg{
+      min-height: calc(100vh - 96px);
+      background:
+        linear-gradient(rgba(243,247,244,.93), rgba(243,247,244,.93)),
+        url("hero.jpg") center / cover no-repeat;
+      padding: 54px 0 90px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+
+    .container{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px;
     }
 
     h1{
-      color: var(--green);
-      font-size: 32px;
-      margin-bottom: 12px;
+      margin: 0 0 10px;
       text-align:center;
+      color: var(--green);
+      font-size: 2.15rem;
+      letter-spacing: .2px;
     }
 
     .intro{
+      max-width: 760px;
+      margin: 0 auto 18px;
       text-align:center;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      color:#4b5b4b;
+      line-height:1.55;
+      color:#2b2b2b;
+      font-size: 1.02rem;
     }
 
-    .faq{
+    /* ===== PANEL ===== */
+    .panel{
       background:#fff;
-      border-radius:14px;
-      padding:22px 24px;
-      margin-bottom:18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      border-left: 7px solid var(--green);
     }
 
-    .faq h3{
-      margin-top:0;
+    .panel-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .panel-head .note{
+      margin:0;
+      line-height:1.45;
+      color:#3b3b3b;
+      font-size: .98rem;
+    }
+
+    .mini-cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:900;
+      border: 2px solid var(--green);
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+    .btn.primary{ background: var(--green); color:#fff; }
+    .btn.ghost{ background: transparent; color: var(--green); }
+
+    /* ===== FAQ ACCORDION ===== */
+    .faq-list{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+    }
+
+    details.faq-item{
+      background:#fff;
+      border-radius: 16px;
+      border: 1px solid rgba(31,92,59,.12);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+
+    details.faq-item summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 16px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 14px;
+      font-weight:900;
       color: var(--green);
-      font-size:18px;
     }
 
-    .faq p{
-      margin-bottom:0;
+    details.faq-item summary::-webkit-details-marker{ display:none; }
+
+    .q{
+      display:block;
+      line-height: 1.25;
+      font-size: 1rem;
     }
 
+    .chev{
+      display:inline-block;
+      transition: transform .22s ease;
+      font-weight:900;
+      font-size: 1.1rem;
+      opacity:.85;
+    }
+
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .answer{
+      padding: 0 16px 16px;
+      line-height: 1.6;
+      color: #1f1f1f;
+      font-size: 1rem;
+    }
+
+    details.faq-item summary:hover{
+      background: rgba(31,92,59,.05);
+    }
+
+    /* ===== SMALL “SERVICE STANDARDS” STRIP ===== */
+    .standards{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(31,92,59,.14);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px 16px;
+      color: var(--green);
+      font-weight:900;
+      font-size: .95rem;
+    }
+    .standards span::before{ content:"• "; opacity:.75; }
+
+    /* ===== MOBILE ===== */
     @media (max-width: 720px){
-      nav img{ height:70px; }
+      nav{ padding: 12px 14px; }
+      nav img{ height: 60px; }
+      .nav-links{ justify-content:center; }
 
-      h1{ font-size:26px; }
+      .faq-bg{ padding: 38px 0 70px; }
+      h1{ font-size: 1.75rem; }
 
-      .faq{ padding:18px; }
+      .panel{ padding: 18px 14px; }
+      .panel-head{ flex-direction: column; align-items:flex-start; }
+      .mini-cta .btn{ width: 100%; text-align:center; }
     }
   </style>
 </head>
@@ -99,86 +230,114 @@
 
   <nav>
     <img src="logo.png" alt="NB’s MarketSpace logo">
-    <div>
-  <a href="/">Home</a>
-  <a href="/bags.html">Bags &amp; Prices</a>
-  <a href="/about.html">About NB's MarketSpace</a>
-  <a href="/why.html">Why We’re Different</a>
-  <a href="/faq.html">FAQs</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/bags.html">Bags &amp; Prices</a>
+      <a href="/about.html">About NB's MarketSpace</a>
+      <a href="/why.html">Why We’re Different</a>
+      <a href="/faq.html">FAQs</a>
     </div>
   </nav>
 
-  <main>
-    <h1>Frequently Asked Questions</h1>
-    <p class="intro">
-      Here are answers to some common questions about ordering from NB’s MarketSpace.
-      If you need anything else, feel free to reach out.
-    </p>
+  <section class="faq-bg">
+    <div class="container">
 
-    <div class="faq">
-      <h3>How do I place an order?</h3>
-      <p>
-        Orders are placed via WhatsApp or phone. Simply message or call Natasha at
-        <strong>759-1743</strong> with your selected bag(s) or custom list.
+      <h1>Frequently Asked Questions</h1>
+      <p class="intro">
+        Clear answers about ordering, sourcing, packing, and delivery, presented in a straightforward way.
       </p>
-    </div>
 
-    <div class="faq">
-      <h3>When do orders close?</h3>
-      <p>
-        Orders close on <strong>Thursday</strong> for <strong>Saturday delivery</strong>
-        (every other weekend). Cut-off dates are listed on the Bags & Prices page.
-      </p>
-    </div>
+      <div class="panel">
 
-    <div class="faq">
-      <h3>Where do you deliver?</h3>
-      <p>
-        Delivery is currently available in <strong>Couva and surrounding areas</strong>.
-        If you’re unsure whether we deliver to you, just ask.
-      </p>
-    </div>
+        <div class="panel-head">
+          <p class="note">
+            If you don’t see your question below, feel free to reach out directly - we’ll guide you quickly.
+          </p>
+          <div class="mini-cta">
+            <a class="btn primary" href="/bags.html">Bags &amp; Prices</a>
+            <a class="btn ghost" href="/why.html">Why We’re Different</a>
+          </div>
+        </div>
 
-    <div class="faq">
-      <h3>What is the delivery fee?</h3>
-      <p>
-        The standard delivery fee is <strong>TT$20</strong>.
-      </p>
-    </div>
+        <div class="faq-list">
 
-    <div class="faq">
-      <h3>Can I customise my order?</h3>
-      <p>
-        Yes. Custom orders are welcome, depending on availability.
-        Just let us know what you need when placing your order.
-      </p>
-    </div>
+          <details class="faq-item">
+            <summary>
+              <span class="q">How do I place an order?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              Choose a bag option or share your produce list. Once your order is confirmed, you’ll receive
+              the cost and delivery details.
+            </div>
+          </details>
 
-    <div class="faq">
-      <h3>Are prices fixed?</h3>
-      <p>
-        Prices may be updated weekly due to changes in market produce prices.
-        The current price period is always shown on the website.
-      </p>
-    </div>
+          <details class="faq-item">
+            <summary>
+              <span class="q">Do you offer subscriptions?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              No. We don’t lock you into subscriptions or fixed bags. You order when you need, based on what works for your household.
+            </div>
+          </details>
 
-    <div class="faq">
-      <h3>How is the produce selected?</h3>
-      <p>
-        All produce is hand-selected with care, stored properly, and packed neatly
-        to ensure freshness and quality.
-      </p>
-    </div>
+          <details class="faq-item">
+            <summary>
+              <span class="q">How is the produce selected?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              Produce is selected individually based on quality and freshness. We prioritise good handling from selection to packing,
+              so items arrive in great condition.
+            </div>
+          </details>
 
-    <div class="faq">
-      <h3>What if I have a question not listed here?</h3>
-      <p>
-        Feel free to call or WhatsApp Natasha at <strong>759-1743</strong>.
-        I’m always happy to help.
-      </p>
-    </div>
+          <details class="faq-item">
+            <summary>
+              <span class="q">When is delivery arranged?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              Delivery timing is confirmed after orders are prepared, with clear updates provided in advance.
+              This helps ensure a smooth delivery experience.
+            </div>
+          </details>
 
-  </main>
+          <details class="faq-item">
+            <summary>
+              <span class="q">Can I request changes or substitutions?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              Yes - where practical. If an item is unavailable or below standard, we’ll suggest a suitable alternative
+              or confirm how you’d like us to proceed.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="q">What areas do you deliver to?</span>
+              <span class="chev">⌄</span>
+            </summary>
+            <div class="answer">
+              Delivery areas and fees depend on location. Once you share your address, we’ll confirm the delivery arrangement clearly.
+            </div>
+          </details>
+
+        </div>
+
+        <div class="standards">
+          <span>Quality checks</span>
+          <span>Careful handling</span>
+          <span>Clear communication</span>
+          <span>Flexible ordering</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
 </body>
 </html>
