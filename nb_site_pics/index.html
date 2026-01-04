@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NB’s MarketSpace | Personalised Produce Delivery</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NB's MarketSpace</title>
 
   <style>
     :root{
-      --green:#1f5c3b;
-      --bg:#f3f7f4;
-      --ink:#1f1f1f;
-      --line: rgba(31,92,59,.14);
-      --shadow: 0 14px 34px rgba(0,0,0,.10);
+      --green:#2a4c2f;
+      --green2:#34633c;
+      --text:#ffffff;
     }
 
     *{ box-sizing:border-box; }
 
     body{
       margin:0;
-      min-height:100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color:var(--ink);
-      background: var(--bg);
+      font-family: Arial, sans-serif;
+      background:#0b0f0c;
+      color:var(--text);
     }
 
-    /* ===== NAV ===== */
+    /* NAV (no blur = no mobile flicker) */
     nav{
-      background:#2f5a3a;
-      padding:14px 18px;
+      position:fixed;
+      top:0; left:0; right:0;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      padding:12px 18px;
+      background:rgba(0,0,0,0.72);
+      z-index:50;
     }
 
-    nav img{
-      height:72px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 120px;
+    }
+
+    .brand img{
+      height:96px;   /* Bigger logo */
       width:auto;
       display:block;
     }
 
     .nav-links{
       display:flex;
-      gap:18px;
+      gap:16px;
       flex-wrap:wrap;
-      align-items:center;
       justify-content:flex-end;
+      align-items:center;
     }
 
     .nav-links a{
       color:#fff;
       text-decoration:none;
-      font-weight:800;
-      font-size:.95rem;
+      font-weight:700;
+      font-size:14px;
       opacity:.95;
+      white-space:nowrap;
     }
 
     .nav-links a:hover{
@@ -61,159 +68,150 @@
       opacity:1;
     }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero{
-      min-height: calc(100vh - 96px);
-      background:
-        linear-gradient(rgba(243,247,244,.92), rgba(243,247,244,.92)),
-        url("hero.jpg") center / cover no-repeat;
-      padding: 70px 0 90px;
-      border-top: 1px solid rgba(255,255,255,.10);
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    .container{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 18px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("hero.jpg") center/cover no-repeat;
+      filter: brightness(0.9) contrast(1.03);
+      transform: scale(1.02);
     }
 
-    .hero-panel{
-      background:#fff;
-      border-radius:22px;
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      padding:34px 34px 30px;
-      border-left:7px solid var(--green);
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.55)
+      );
     }
 
-    h1{
+    .hero-content{
+      position:relative;
+      z-index:3;
+      text-align:center;
+      padding:140px 18px 54px; /* space for fixed nav */
+      max-width:980px;
+    }
+
+    .headline{
+      font-size: clamp(28px, 4vw, 52px); /* reduced a bit */
+      font-weight: 900;
+      letter-spacing: .2px;
+      line-height:1.12;
       margin:0 0 14px;
-      color:var(--green);
-      font-size:2.6rem;
-      line-height:1.15;
-      letter-spacing:.2px;
+      text-shadow: 0 10px 28px rgba(0,0,0,.35);
     }
 
-    .tagline{
-      margin:0 0 18px;
-      font-size:1.1rem;
-      line-height:1.6;
+    .subtext{
+      font-size: clamp(16px, 1.6vw, 20px);
       max-width:760px;
+      margin:0 auto 24px;
+      line-height:1.6;
+      opacity:.95;
+      background: rgba(0,0,0,0.25);
+      padding: 10px 14px;
+      border-radius: 12px;
+      display:inline-block;
     }
 
-    /* ===== TRUST LINE ===== */
-    .trust{
-      margin:0 0 22px;
-      padding-top:14px;
-      border-top:1px solid var(--line);
+    .cta-row{
       display:flex;
+      gap:12px;
+      justify-content:center;
       flex-wrap:wrap;
-      gap:14px 18px;
-      font-weight:800;
-      color:var(--green);
-      font-size:.95rem;
-    }
-
-    .trust span::before{
-      content:"• ";
-      opacity:.75;
-    }
-
-    /* ===== CTA ===== */
-    .cta{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:14px;
     }
 
     .btn{
       display:inline-block;
       padding:14px 20px;
-      border-radius:999px;
+      border-radius:14px;
+      font-weight:800;
       text-decoration:none;
-      font-weight:900;
-      border:2px solid var(--green);
-      font-size:1rem;
-    }
-
-    .btn.primary{
-      background:var(--green);
+      font-size:15px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
       color:#fff;
     }
 
-    .btn.ghost{
-      background:transparent;
-      color:var(--green);
+    .btn.primary{
+      background: var(--green);
+      border-color: rgba(0,0,0,0);
     }
 
-    /* ===== MOBILE ===== */
-    @media (max-width:720px){
-      nav{ padding:12px 14px; }
-      nav img{ height:60px; }
-      .nav-links{ justify-content:center; }
+    .btn.primary:hover{ background: var(--green2); }
 
-      .hero{ padding:48px 0 70px; }
+    .btn:hover{
+      transform: translateY(-1px);
+      transition: .15s ease;
+    }
 
-      .hero-panel{
-        padding:24px 20px 24px;
-      }
+    .footer-note{
+      margin-top:18px;
+      font-size:13px;
+      opacity:.9;
+    }
 
-      h1{
-        font-size:2rem;
-      }
-
-      .tagline{
-        font-size:1.02rem;
-      }
-
-      .cta .btn{
-        width:100%;
-        text-align:center;
-      }
+    /* MOBILE: keep nav from feeling cramped */
+    @media (max-width: 720px){
+      .brand img{ height:76px; }
+      .nav-links a{ font-size:13px; }
+      .nav-links{ gap:12px; }
+      nav{ padding:10px 12px; }
+      .hero-content{ padding-top:120px; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- NAV -->
   <nav>
-    <img src="logo.png" alt="NB’s MarketSpace logo">
+    <div class="brand">
+      <img src="logo.png" alt="NB's MarketSpace logo">
+    </div>
+
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/bags.html">Bags &amp; Prices</a>
-      <a href="/about.html">About NB's MarketSpace</a>
-      <a href="/why.html">Why We’re Different</a>
-      <a href="/faq.html">FAQs</a>
+      <a href="index.html">Home</a>
+      <a href="bags.html">Bags &amp; Prices</a>
+      <a href="about.html">About NB's MarketSpace</a>
+      <a href="why.html">Why We’re Different</a>
+      <a href="faq.html">FAQs</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="container">
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-content">
+      <h1 class="headline">Can’t come to market? We’ve got you covered!</h1>
 
-      <div class="hero-panel">
-        <h1>Can’t come to market?<br>We’ve got you covered.</h1>
-
-        <p class="tagline">
-          NB’s MarketSpace provides carefully selected, market-fresh produce for households
-          that value reliability, clear communication, and thoughtful handling.
-        </p>
-
-        <div class="trust">
-          <span>Personally selected produce</span>
-          <span>Consistent sourcing standards</span>
-          <span>Clear ordering &amp; delivery process</span>
-          <span>No subscriptions required</span>
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="/bags.html">View Bags &amp; Prices</a>
-          <a class="btn ghost" href="/about.html">About NB’s MarketSpace</a>
-        </div>
+      <div class="subtext">
+        Fresh, high-quality produce delivered with care, reliability, and a personal touch —
+        serving Couva and surrounding areas.
       </div>
 
+      <div class="cta-row">
+        <a class="btn primary" href="bags.html">View Bag Options &amp; Prices</a>
+        <a class="btn" href="about.html">About NB's MarketSpace</a>
+      </div>
+
+      <div class="footer-note">
+        Weekly updates • Clean, neatly packed produce • Custom orders welcome
+      </div>
     </div>
-  </section>
+  </main>
 
 </body>
 </html>
