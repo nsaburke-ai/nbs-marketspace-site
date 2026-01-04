@@ -3,251 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me – NB’s MarketSpace</title>
+  <title>About NB’s MarketSpace</title>
 
   <style>
-    :root {
-      --green: #2a4c2f;
-      --text: #1f2a1f;
-      --muted: #4b5b4b;
-      --panel: rgba(255,255,255,0.88);
-      --shadow: 0 8px 20px rgba(0,0,0,0.08);
-      --radius: 18px;
+    :root{
+      --green:#1f5c3b;
+      --bg:#f3f7f4;
+      --ink:#1f1f1f;
+      --line: rgba(31,92,59,.14);
+      --shadow: 0 14px 34px rgba(0,0,0,.10);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background: var(--bg);
+    }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      line-height: 1.7;
+    /* ===== NAV ===== */
+    nav{
+      background: #2f5a3a;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
 
-      /* subtle full-page background image */
+    nav img{
+      height: 56px;
+      width:auto;
+      display:block;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+      opacity:.95;
+    }
+    .nav-links a:hover{ text-decoration:underline; opacity:1; }
+
+    /* ===== PAGE WRAP ===== */
+    .about-bg{
       background:
-        linear-gradient(rgba(234,246,234,0.92), rgba(234,246,234,0.92)),
-        url("nb_site_pics/standard.jpg") center / cover no-repeat fixed;
+        linear-gradient(rgba(243,247,244,.93), rgba(243,247,244,.93)),
+        url("hero.jpg") center / cover no-repeat;
+      padding: 54px 0 90px;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
 
-    h1, h2 {
-      font-family: Arial, sans-serif !important;
-      color: var(--green);
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(26px, 2.8vw, 38px);
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    /* NAV */
-    nav {
-      background: var(--green);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav img {
-      height: 100px;
-      width: auto;
-      display: block;
-    }
-
-    nav a {
-      color: #ffffff;
-      margin-left: 18px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      white-space: nowrap;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* CONTENT WRAP */
-    .wrap {
+    .container{
       max-width: 980px;
       margin: 0 auto;
-      padding: 48px 18px 64px;
+      padding: 0 18px;
     }
 
-    .card {
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 28px 28px;
-      box-shadow: var(--shadow);
-    }
-
-    p {
+    h1{
       margin: 0 0 16px;
-      color: var(--muted);
-      font-weight: 600;
+      text-align:center;
+      color: var(--green);
+      font-size: 2.25rem;
+      letter-spacing: .2px;
     }
 
-    @media (max-width: 760px) {
-      nav img {
-        height: 62px;
-      }
-
-      nav a {
-        font-size: 14px;
-        margin-left: 12px;
-      }
-
-      .card {
-        padding: 22px 18px;
-      }
+    /* ===== MAIN PANEL ===== */
+    .panel{
+      background:#fff;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 26px 26px;
+      border-left: 7px solid var(--green);
     }
- /* ===== ABOUT PAGE: PROFESSIONAL LAYOUT ===== */
-.about-page{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px 18px 70px;
-}
 
-.about-hero{
-  margin-top: 18px;
-  padding: 26px;
-  border-radius: 18px;
-  background: #ffffff;
-  border: 1px solid rgba(31,92,59,.10);
-  box-shadow: 0 10px 28px rgba(0,0,0,.08);
-}
+    .kicker{
+      margin:0 0 10px;
+      font-weight:800;
+      color: var(--green);
+      font-size: 1.15rem;
+    }
 
-.about-kicker{
-  margin: 0 0 10px;
-  font-weight: 800;
-  color: #1f5c3b;
-  font-size: 1.1rem;
-}
+    .panel p{
+      margin:0;
+      line-height:1.65;
+      font-size: 1.02rem;
+    }
 
-.about-hero p{
-  margin: 0;
-  line-height: 1.6;
-  font-size: 1.02rem;
-}
+    /* ===== CREDIBILITY STRIP ===== */
+    .cred{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px 16px;
+      color: var(--green);
+      font-weight:800;
+      font-size: .95rem;
+    }
 
-.cred-strip{
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
+    .cred span::before{
+      content:"• ";
+      opacity:.75;
+    }
 
-.cred{
-  background: rgba(31,92,59,.06);
-  border: 1px solid rgba(31,92,59,.12);
-  border-radius: 14px;
-  padding: 14px 12px;
-  text-align: center;
-}
+    /* ===== CTA ===== */
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
 
-.cred .label{
-  display:block;
-  font-weight: 800;
-  color:#1f5c3b;
-  font-size:.95rem;
-  margin-bottom: 4px;
-}
+    .cta-text{
+      margin:0;
+      line-height:1.5;
+      max-width: 520px;
+    }
 
-.cred .desc{
-  display:block;
-  font-size:.9rem;
-  line-height: 1.35;
-  color:#2b2b2b;
-}
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
-.about-grid{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
+    .btn{
+      display:inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:900;
+      border: 2px solid var(--green);
+      font-size: .95rem;
+    }
+    .btn.primary{
+      background: var(--green);
+      color:#fff;
+    }
+    .btn.ghost{
+      background: transparent;
+      color: var(--green);
+    }
 
-.about-card{
-  background:#ffffff;
-  border: 1px solid rgba(31,92,59,.10);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.08);
-}
+    /* ===== MOBILE ===== */
+    @media (max-width: 720px){
+      nav{ padding: 12px 14px; }
+      nav img{ height: 48px; }
+      .nav-links{ justify-content:center; }
 
-.about-card h3{
-  margin: 0 0 8px;
-  color:#1f5c3b;
-  font-size: 1.05rem;
-}
+      .about-bg{ padding: 38px 0 70px; }
+      h1{ font-size: 1.8rem; }
+      .panel{ padding: 20px 18px; }
 
-.about-card p{
-  margin: 0;
-  line-height: 1.55;
-}
-
-.about-cta{
-  margin-top: 18px;
-  padding: 18px;
-  border-radius: 18px;
-  background: #ffffff;
-  border: 1px solid rgba(31,92,59,.10);
-  box-shadow: 0 10px 28px rgba(0,0,0,.08);
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.about-cta .cta-text{
-  margin:0;
-  line-height: 1.5;
-}
-
-.about-cta .cta-actions{
-  display:flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* If you already have button styles, this won’t break them */
-.btn{
-  display:inline-block;
-  padding: 12px 18px;
-  border-radius: 999px;
-  text-decoration:none;
-  font-weight: 800;
-}
-
-.btn.primary{
-  background:#1f5c3b;
-  color:#fff;
-  border: 2px solid #1f5c3b;
-}
-
-.btn.ghost{
-  background: transparent;
-  color:#1f5c3b;
-  border: 2px solid #1f5c3b;
-}
-
-/* Mobile */
-@media (max-width: 900px){
-  .cred-strip{ grid-template-columns: 1fr 1fr; }
-  .about-grid{ grid-template-columns: 1fr; }
-}
- 
+      .cta{ flex-direction: column; align-items:flex-start; }
+      .actions .btn{ width: 100%; text-align:center; }
+    }
   </style>
 </head>
 
@@ -255,72 +179,52 @@
 
   <nav>
     <img src="logo.png" alt="NB’s MarketSpace logo">
-    <div>
-<a href="/">Home</a>
-  <a href="/bags.html">Bags &amp; Prices</a>
-  <a href="/about.html">About NB's MarketSpace</a>
-  <a href="/why.html">Why We’re Different</a>
-  <a href="/faq.html">FAQs</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/bags.html">Bags &amp; Prices</a>
+      <a href="/about.html">About NB's MarketSpace</a>
+      <a href="/why.html">Why We’re Different</a>
+      <a href="/faq.html">FAQs</a>
     </div>
   </nav>
 
-  <main class="wrap">
-    <h1>About NB’s MarketSpace</h1>
+  <section class="about-bg">
+    <div class="container">
 
-  <section class="about-page">
+      <h1>About NB’s MarketSpace</h1>
 
-  <div class="about-hero">
-    <div class="about-kicker">A produce service built on consistency, care, and clear standards</div>
-    <p>
-      NB’s MarketSpace is a personalised produce service designed for households that value reliability,
-      clear communication, and market-fresh quality. Each order follows a consistent process — from market
-      selection and quality checks to careful packing and delivery — ensuring customers receive produce they
-      can rely on week after week.
-    </p>
-  </div>
+      <div class="panel">
+        <div class="kicker">A produce service built on consistency, care, and clear standards</div>
 
-  <div class="cred-strip">
-    <div class="cred">
-      <span class="label">Consistent sourcing</span>
-      <span class="desc">Regular market routines and quality checks</span>
-    </div>
-    <div class="cred">
-      <span class="label">Careful handling</span>
-      <span class="desc">Packed with intention for freshness</span>
-    </div>
-    <div class="cred">
-      <span class="label">Clear process</span>
-      <span class="desc">Straightforward ordering and delivery</span>
-    </div>
-    <div class="cred">
-      <span class="label">Flexible ordering</span>
-      <span class="desc">No subscriptions or fixed boxes</span>
-    </div>
-  </div>
+        <p>
+          NB’s MarketSpace is a personalised produce service designed for households that value reliability,
+          clear communication, and market-fresh quality. Each order follows a consistent process — from market
+          selection and quality checks to careful packing and delivery — ensuring customers receive produce
+          they can rely on week after week.
+        </p>
 
-  <div class="about-grid">
-    <div class="about-card">
-      <h3>Personal, Attentive Service</h3>
-      <p>We take the time to understand what you need and ensure your order is handled with care and intention.</p>
-    </div>
+        <div class="cred">
+          <span>Consistent sourcing</span>
+          <span>Quality checks</span>
+          <span>Careful handling</span>
+          <span>Clear ordering</span>
+          <span>No subscriptions</span>
+        </div>
 
-    <div class="about-card">
-      <h3>Flexible Ordering</h3>
-      <p>We don’t lock you into subscriptions or fixed boxes. Order when you need and adjust based on your household.</p>
-    </div>
+        <div class="cta">
+          <p class="cta-text">
+            Ready to order? View bag options and pricing, or review the ordering process.
+          </p>
 
-    <div class="about-card">
-      <h3>Market-Fresh Quality</h3>
-      <p>Produce is selected for freshness and handled properly from market to door, so it arrives in great condition.</p>
-    </div>
-  </div>
+          <div class="actions">
+            <a class="btn primary" href="/bags.html">Bags &amp; Prices</a>
+            <a class="btn ghost" href="/faq.html">Ordering FAQs</a>
+          </div>
+        </div>
+      </div>
 
-  <div class="about-cta">
-    <p class="cta-text"><strong>Ready to order?</strong> View bag options and pricing, or review the ordering process.</p>
-    <div class="cta-actions">
-      <a class="btn primary" href="/bags.html">Bags &amp; Prices</a>
-      <a class="btn ghost" href="/faq.html">Ordering FAQs</a>
     </div>
-  </div>
+  </section>
 
-</section>
+</body>
+</html>
