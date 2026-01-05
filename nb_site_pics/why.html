@@ -130,7 +130,21 @@
     height: 56px;
   }
 }
-</style>
+.page-bg{
+  min-height: calc(100vh - 96px);
+  background:
+    linear-gradient(rgba(243,247,244,.93), rgba(243,247,244,.93)),
+    url("hero.jpg") center / cover no-repeat;
+  padding: 54px 0 90px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+  </style>
 
  </head>
 
@@ -147,6 +161,8 @@
   <a href="/faq.html">FAQs</a>
     </div>
   </nav>
+<section class="page-bg">
+  <div class="container">
 
   <!-- CONTENT -->
   <main>
@@ -207,6 +223,7 @@
       <a href="bags.html">View Bags & Prices</a>
     </div>
   </main>
-
+  </div>
+</section>
 </body>
 </html>
