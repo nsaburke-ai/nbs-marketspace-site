@@ -223,7 +223,21 @@
   background:#eef6f0;
   border-radius:20px;
 }
+.page-bg{
+  min-height: calc(100vh - 96px);
+  background:
+    linear-gradient(rgba(243,247,244,.93), rgba(243,247,244,.93)),
+    url("hero.jpg") center / cover no-repeat;
+  padding: 54px 0 90px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
 
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+    
   </style>
 </head>
 
@@ -239,6 +253,8 @@
   <a href="/faq.html">FAQs</a>
 
   </nav>
+<section class="page-bg">
+  <div class="container">
 
   <div class="wrap">
     <div class="header">
@@ -368,6 +384,8 @@
         </div>
 
   </div>
+  </div>
+</section>
 
 </body>
 </html>
